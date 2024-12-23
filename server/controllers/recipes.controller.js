@@ -1,5 +1,6 @@
 import Recipes from "../models/recipes.model.js";
 
+//creat a new recipe
 async function create(req, res) {
 	try {
 		const newRecipe = await Recipes.create(req.body);
@@ -9,7 +10,7 @@ async function create(req, res) {
 		res.status(400).json(err);
 	}
 }
-
+//show all recipes
 async function getAllRecipes(req, res) {
 	try {
 		const allRecipes = await Recipes.find();
@@ -19,7 +20,7 @@ async function getAllRecipes(req, res) {
 		res.status(400).json(error);
 	}
 }
-
+//get one recipe by id
 async function getOneRecipe(req, res) {
 	try {
 		const foundRecipe = await Recipes.findById(req.params.id);
@@ -29,7 +30,7 @@ async function getOneRecipe(req, res) {
 		res.status(400).json(error);
 	}
 }
-
+//update one recipe by id
 async function updateOneRecipe(req, res) {
 	const options = {
 		new: true,
@@ -47,7 +48,7 @@ async function updateOneRecipe(req, res) {
 		res.status(400).json(error);
 	}
 }
-
+//delete one recipe by id
 async function deleteOneRecipe(req, res) {
 	try {
 		const deletedRecipe = await Recipes.findByIdAndDelete(

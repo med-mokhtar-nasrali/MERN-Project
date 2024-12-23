@@ -17,7 +17,8 @@ const RecipesSchema = new Schema(
 
         recipeDuration: {
             type: Number,
-            required: [true, "You must put how much time the recipe take"]
+            required: [true, "You must put how much time the recipe take"],
+            min: [1, "You are not super sonic!"]
         },
         
         recipeImg: {
@@ -33,12 +34,24 @@ const RecipesSchema = new Schema(
 
         recipeCategory: {
             type: String,
-            required: [true, "You must declare in wich categorie your recipe will be"]
+            validate:{
+                validator:(t)=>["Vegan","Fruitarian","Omnivores","Carnivores","Vegetarians","Halal"].includes(t),
+                message:(props)=>props.value+" is not a recipe category"
+            }
         },
 
         recipeType: {
             type: String,
-            required: [true, "You must put the type of the recipe (Breaskfast, Dinner, etc..)"]
+            validate:{
+                validator:(t)=>["Breakfast","Lunch","Dinner","Snacks"].includes(t),
+                message:(props)=>props.value+" is not a recipe type"
+            }
+        },
+        
+        recipeIngredients: {
+            type: [String],
+            default:[],
+            required:[true,"You must put your Ingredients"]
         }
     },
     { timestamps: true }
