@@ -1,25 +1,26 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
-// Middleware to authenticate the token
-export const authenticateToken = (req, res, next) => {
-    // Extract token from the Authorization header (Bearer <token>)
-    const token = req.headers.authorization?.split(' ')[1];
+const authenticateToken = (req, res, next) => {
+    // Extract token from the 'Authorization' header
+    const token = req.headers["authorization"]?.split(" ")[1];  // Expecting "Bearer <token>"
 
-    // If no token is provided, return an error
     if (!token) {
-        return res.status(401).json({ error: 'No token provided' });
+        return res.status(401).json({ message: "Unauthorized access. No token provided." });
     }
 
-    // Verify the token using JWT_SECRET from environment variables
-    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-        if (err) {
-            return res.status(403).json({ error: 'Invalid or expired token' });
-        }
+    try {
+        // Verify the token using the secret key
+        const verified = jwt.verify(token, process.env.JWT_SECRET);
 
-        // If the token is valid, attach the decoded information to the request
-        req.user = decoded;
+        // Attach user info from the token to the request object
+        req.user = verified;
 
-        // Continue to the next middleware or route handler
+        // Proceed to the next middleware or route handler
         next();
-    });
+    } catch (err) {
+        console.error("Token verification error:", err);
+        res.status(403).json({ message: "Invalid or expired token." });
+    }
 };
+
+export default authenticateToken;

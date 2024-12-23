@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-
+import User from "./user.model.js"
 const RecipesSchema = new Schema(
     {
         recipeName: {
@@ -52,7 +52,8 @@ const RecipesSchema = new Schema(
             type: [String],
             default:[],
             required:[true,"You must put your Ingredients"]
-        }
+        },
+        postedBy: { type: Schema.Types.ObjectId, ref: "User", required: true }, // Reference to User
     },
     { timestamps: true }
 )
