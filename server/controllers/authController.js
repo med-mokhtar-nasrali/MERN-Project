@@ -3,13 +3,20 @@ import jwt from 'jsonwebtoken';
 import User from '../models/user.model.js';
 
 // Register a new user
-export  const registerUser = async (req, res) => {
+export const registerUser = async (req, res) => {
     try {
-        const { firstName, lastName, email, password } = req.body;
+        const { firstName, lastName, email, password, confirmPassword } = req.body;
+
+        // Check if the password matches the confirmation password
+        if (password !== confirmPassword) {
+            console.log({ error: 'Passwords do not match' })
+            return res.status(400).json({ confirmPassword: {message:'Passwords do not match' }});
+        }
 
         // Check if the email already exists
         const existingUser = await User.findOne({ email });
-        if (existingUser) return res.status(400).json({ error: 'Email already in use' });
+
+        if (existingUser) return res.status(400).json({ email: {message:'Email already in use' }});
 
         // Create a new user
         const newUser = new User({ firstName, lastName, email, password });
@@ -17,7 +24,8 @@ export  const registerUser = async (req, res) => {
 
         res.status(201).json({ message: 'User registered successfully' });
     } catch (err) {
-        res.status(500).json({ error: 'Registration failed', details: err.message });
+        res.status(500).json(err );
+        console.log(err)
     }
 };
 
@@ -28,11 +36,11 @@ export const loginUser = async (req, res) => {
 
         // Check if the user exists
         const user = await User.findOne({ email });
-        if (!user) return res.status(404).json({ error: 'Invalid email or password' });
+        if (!user) return res.status(404).json({ login:{message:'Invalid email or password'} });
 
         // Compare passwords
         const isPasswordValid = await user.comparePassword(password);
-        if (!isPasswordValid) return res.status(400).json({ error: 'Invalid email or password' });
+        if (!isPasswordValid) return res.status(400).json({ login:{message:'Invalid email or password'} });
 
         // Generate JWT
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
@@ -49,7 +57,7 @@ export const getAllUsers = async (req, res) => {
         const users = await User.find();
         if (!users) return res.status(404).json({ error: 'No users found' });
 
-        res.status(200).json({ users });
+        res.status(200).json( users );
     } catch (err) {
         res.status(500).json({ error: 'Failed to fetch users', details: err.message });
     }
