@@ -4,21 +4,39 @@ import {
     getAllRecipes, 
     getOneRecipe, 
     updateOneRecipe, 
-    deleteOneRecipe 
+    deleteOneRecipe,
 } from "../controllers/recipes.controller.js";
-import authenticateToken from "../middlewares/authMiddleware.js"; // Import your middleware
+import {    addCommentToRecipe,getCommentsForRecipe} from "../controllers/comments.controller.js"
+import { addRatingToRecipe, getRatingsForRecipe } from "../controllers/rating.controller.js";
+import authenticateToken from "../middlewares/authMiddleware.js";
 
 const router = Router();
 
 // Routes to handle creation and fetching of all recipes
 router.route("/recipes")
-    .post(authenticateToken, create)  // Protect creation with authentication
-    .get(getAllRecipes);             // Fetching all recipes is public
+    .post(authenticateToken, create)
+    .get(getAllRecipes);
 
 // Routes to handle specific recipes by ID
 router.route("/recipes/:id")
-    .get(getOneRecipe)               // Fetch a single recipe is public
-    .put(authenticateToken, updateOneRecipe) // Protect updating a recipe
-    .delete(authenticateToken, deleteOneRecipe); // Protect deletion of a recipe
+    .get(getOneRecipe)
+    .put(authenticateToken, updateOneRecipe) 
+    .delete(authenticateToken, deleteOneRecipe); 
+
+// Routes for handling comments on a recipe
+router.route("/recipes/:id/comments")
+    .post(authenticateToken, addCommentToRecipe)
+    .get(getCommentsForRecipe);
+    
+// Route to add a rating to a recipe
+router.route("/recipes/:id/rate")
+    .post(authenticateToken,addRatingToRecipe);
+    
+// Route to get ratings for a recipe
+router.route("/recipes/:id/ratings") 
+    .get(getRatingsForRecipe);
+    
+
+    
 
 export default router;
