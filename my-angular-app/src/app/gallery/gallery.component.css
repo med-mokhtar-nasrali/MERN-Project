@@ -1,0 +1,65 @@
+.gallery-box {
+    margin-top: 15px;
+    text-align: center;  
+    width:150%;
+    position: relative;   
+
+    background-color: #080808;/* Nécessaire pour positionner les éléments enfants */
+}
+
+.gallery-box img {
+    width: 100%;
+    border-radius: 10px;  
+    color: #ce0000;
+    opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.gallery-box:hover img{
+    opacity: 0.4;
+    
+  
+    
+} 
+.gallery-box:hover .g-caption{
+     transform: scale(1.05);  
+    background-color: rgb(5, 4, 5) ;
+    opacity: 1;
+    
+} 
+
+/* Style de la légende */
+.g-caption h4 {
+    margin-top: 10px;
+margin: 0px auto;
+    color: #ce0000;
+    opacity: 0; /* Cache le texte par défaut */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px); /* Ajout d'un léger déplacement initial */
+    position: absolute;
+    text-align: center;
+    transform: translate(-100%, 5px);
+ 
+    z-index: 2; 
+}
+
+/* Afficher le texte au survol de l'image */
+.gallery-box:hover .g-caption h4 {
+    opacity: 1; /* Rendre visible */ 
+    transform: translate(-50%, 10px); /* Remet à la position d'origine */
+}
+
+.g-caption{
+    /* transition: .5s ease; */
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+  left: 40%;
+    transform: translate(-50%, -100%);
+    -ms-transform: translate(-50%, -100%);
+    text-align: center;  
+}
