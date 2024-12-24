@@ -1,0 +1,254 @@
+@import url("https://www.w3schools.com/w3css/4/w3.css");
+/* Réinitialisation générale */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Section Profil */
+.profile-section {
+    display: flex;
+    padding: 40px 10%; 
+    flex-direction: column;   
+    gap: 10px;
+    background-color: #ffffff;
+   
+}
+
+.div{ 
+    display: flex; 
+    justify-content: center;
+    
+    
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #e1306c; /* Cerceau autour de l'image */
+    background-color: #ddd;
+    margin-right: 30px;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.username-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.username-section h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+button {
+    padding: 7px 15px;
+    background-color: #0095f6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0077e5;
+}
+
+.profile-stats {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 10px;
+}
+
+.profile-stats span {
+    font-weight: bold;
+}
+
+.profile-info p {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.profile-info a {
+    color: #00376b;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.profile-info a:hover {
+    text-decoration: underline;
+}
+
+/* Highlights Section */
+.highlights {
+    display: flex;
+    gap: 15px;
+    padding: 20px 10%;
+    justify-content: center;
+    background-color: #fff;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.highlight {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #e4e4e4;
+    border: 2px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #777;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Posts Section */
+.posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+    padding-left: 30%; 
+    padding-top: 5%;
+   
+    background-color: #fff;
+}
+
+.post {
+    width: 100%;
+    height: 250px;
+    background-color: #e4e4e4;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.post::before {
+    content: "";
+    display: block;
+    padding-bottom: 100%; /* Assure que les posts soient carrés */
+}
+
+.post img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    header input {
+        width: 100%;
+    }
+
+    .profile-section {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .profile-picture {
+        margin-bottom: 15px;
+    }
+
+    .highlights {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .highlight {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .posts {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    button {
+        width: 100%;
+        text-align: center;
+    }
+}
+ 
+#img{ 
+
+    height: 50%;
+    display: flex;    
+    margin-top:10%;
+    margin-left: 25%;
+    justify-content: space-around;
+   
+} 
+/* .df{ 
+    position: relative; 
+} */ 
+/**********************************************/
+/* From Uiverse.io by andrew-demchenk0 */ 
+/* From Uiverse.io by luigimiraglia */ 
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 12px;
+    gap: 8px;
+    height: 36px;
+    width: 120px;
+    border: none;
+    background: black;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .lable {
+    line-height: 20px;
+    font-size: 17px;
+    color: white;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+  }
+  
+  .button:hover {
+    background: grey;
+  }
+  
+  .button:hover .svg-icon {
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
