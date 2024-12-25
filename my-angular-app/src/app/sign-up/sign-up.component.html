@@ -25,7 +25,6 @@
                     <input type="email" [(ngModel)]="newUser.email" name="email" class="input" placeholder="" />
                     <label class="label">Email*</label>
                     <div *ngIf="errorMessage.email" class="error">{{ errorMessage.email.message }}</div>
-                    <!-- <div *ngIf="errorMessage.error.email" class="error">{{ errorMessage.error.email }}</div> -->
                     </div>
                 </div>
                 </div>
@@ -66,10 +65,6 @@
                 <p class="p">
                 Already have an account? <a routerLink="/login">Login</a>
                 </p>
-    
-                <!-- Success and Error Messages -->
-                <!-- <div *ngIf="errorMessage" class="error">{{ errorMessage.firstName.message }}</div> -->
-
                 <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
             </form>
             </div>
