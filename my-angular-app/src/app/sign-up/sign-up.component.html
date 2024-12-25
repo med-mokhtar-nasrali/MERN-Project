@@ -7,12 +7,12 @@
                 <!-- First and Last Name -->
                 <div class="div">
                 <div class="container">
-                    <input type="text" [(ngModel)]="newUser.firstName" name="firstName" class="input"  />
+                    <input type="text" [(ngModel)]="newUser.firstName" name="firstName" class="input" placeholder=""  />
                     <label class="label">First Name*</label>
                     <div *ngIf="errorMessage.firstName" class="error">{{ errorMessage.firstName.message }}</div>
                 </div>
                 <div class="container">
-                    <input type="text" [(ngModel)]="newUser.lastName" name="lastName" class="input"  />
+                    <input type="text" [(ngModel)]="newUser.lastName" name="lastName" class="input" placeholder="" />
                     <label class="label">Last Name*</label>
                     <div *ngIf="errorMessage.lastName" class="error">{{ errorMessage.lastName.message }}</div>
                 </div>
@@ -22,7 +22,7 @@
                 <div class="row row-space" id="row">
                 <div class="col-2">
                     <div class="container">
-                    <input type="email" [(ngModel)]="newUser.email" name="email" class="input"  />
+                    <input type="email" [(ngModel)]="newUser.email" name="email" class="input" placeholder="" />
                     <label class="label">Email*</label>
                     <div *ngIf="errorMessage.email" class="error">{{ errorMessage.email.message }}</div>
                     <!-- <div *ngIf="errorMessage.error.email" class="error">{{ errorMessage.error.email }}</div> -->
@@ -33,12 +33,12 @@
                 <!-- Password and Confirm Password -->
                 <div>
                 <div class="container">
-                    <input type="password" [(ngModel)]="newUser.password" name="password" class="input"  />
+                    <input type="password" [(ngModel)]="newUser.password" name="password" class="input" placeholder="" />
                     <label class="label">Password*</label>
                     <div *ngIf="errorMessage.password" class="error">{{ errorMessage.password.message }}</div>
                 </div>
                 <div class="container">
-                    <input type="password"  [(ngModel)]="newUser.confirmPassword" name="confirmPassword" class="input"/>
+                    <input type="password"  [(ngModel)]="newUser.confirmPassword" name="confirmPassword" class="input" placeholder=""/>
                     <label class="label">Confirm Password*</label>
                     <div *ngIf="errorMessage.confirmPassword" class="error">{{ errorMessage.confirmPassword.message }}</div>
                 </div>

@@ -432,7 +432,7 @@ input {
 }
 
 .card-2 .card-heading {
-	background: url("../../../public/img/gallery/food/StockCake-Sprinkling Quinoa Salad_1734951285.jpg") top left/cover no-repeat;
+	background: url("../../../public/img/gallery/food/StockCake-Delicious\ seafood\ stew_1734953911.jpg") top left/cover no-repeat;
 	width: 30%;
 	display: table-cell;
 }
@@ -491,13 +491,28 @@ input {
 	color:  #666;;
 	
   }
-  
+  .select{ 
+	display: flex; 
+	justify-content: space-evenly; 
 
-  .container .input:not(:placeholder-shown) ~ .label  {
-    transition: 0.4s;
-    padding-left: 2px;
-    transform: translateY(-35px);
+  } 
+  select{
+	width: 150px; 
+	height: 30px; 
+	border-radius: 10px; 
+
+  } 
+  textarea{  border-radius: 5px;
+	border: solid 1px; 
+	padding: 10px;
   }
+ 
+    .container .input:not(:placeholder-shown) ~ .label  {
+	transition: 0.4s;
+	padding-left: 2px;
+	transform: translateY(-35px); 
+  } 
+ 
     
 
   .animated-button {
@@ -602,8 +617,4 @@ a{
 	padding-top: 2%;
 	font-size: large; 
 	text-align: center;
-}
-.bgigm{
-	background: url("../../../public/img/gallery/section_bg04.png");
-	background-color: #212121;
 }

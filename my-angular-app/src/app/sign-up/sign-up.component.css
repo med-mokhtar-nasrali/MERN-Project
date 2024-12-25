@@ -537,13 +537,11 @@
       
     }
     
-    .container .input:valid ~ .label,
-    .container .input:focus ~ .label {
-      transition: 0.3s;
-      padding-left: 2px;
-      transform: translateY(-35px);
-    } 
-  
+  .container .input:not(:placeholder-shown) ~ .label  {
+    transition: 0.4s;
+    padding-left: 2px;
+    transform: translateY(-35px);
+  }
   .div
   { 
     padding: 2%;
