@@ -33,7 +33,7 @@ export class LoginComponent {
         localStorage.setItem('userId', response.id);
 
         // Redirect to a protected route (e.g., home)
-        this.router.navigate(['/signup']);
+        this.router.navigate(['/all-post']);
       },
       error: (error) => {
         this.errorMessage = error.login.message;

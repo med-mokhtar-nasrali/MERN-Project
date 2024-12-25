@@ -1,4 +1,8 @@
-.div{ 
+.img{ 
     display: flex; 
-    justify-content: center; 
+    justify-content: center;
+    width: 40%; 
+    margin: 0xp auto; 
+    
+
 }
