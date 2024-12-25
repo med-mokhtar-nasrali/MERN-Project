@@ -33,7 +33,7 @@
               "src/styles.css"
             ],
             "scripts": [ 
-             
+            
               "src/js/vendor/jquery-1.12.4.min.js",
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js",

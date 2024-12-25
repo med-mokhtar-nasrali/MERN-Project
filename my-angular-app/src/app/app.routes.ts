@@ -8,6 +8,9 @@ import { ProfileComponent } from './profile/profile.component';
 export const routes: Routes = [  
     {path:'',component:HomeComponent} ,
     {path:'login',component:LoginComponent} ,
-    {path:'singup',component:SignUpComponent},  
-    {path:'porfile',component:ProfileComponent}, 
+    {path:'signup',component:SignUpComponent} 
+
+
+
+
 ];

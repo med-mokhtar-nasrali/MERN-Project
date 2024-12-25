@@ -3,7 +3,6 @@ import { GalleryComponent } from '../gallery/gallery.component';
 import { ContacteComponent } from '../contacte/contacte.component';
 import { LoginComponent } from '../login/login.component';
 import { RouterModule } from '@angular/router';
-import { LoginSignUpComponent } from '../login-sign-up/login-sign-up.component';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 
 @Component({
