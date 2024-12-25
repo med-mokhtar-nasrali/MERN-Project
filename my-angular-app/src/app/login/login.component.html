@@ -13,7 +13,7 @@
                     name="email" 
                     class="input" 
                     [(ngModel)]="loginData.email" 
-                    #email="ngModel">
+                    #email="ngModel" placeholder="">
                     <label class="label">Email*</label>
                     <!-- Display error message for email field -->
                     <div *ngIf="email.touched && email.invalid" class="error-message">
@@ -29,7 +29,7 @@
                     name="password" 
                     class="input" 
                     [(ngModel)]="loginData.password" 
-                    #password="ngModel">
+                    #password="ngModel" placeholder="">
                     <label class="label">Password*</label>
                     <!-- Display error message for password field -->
                     <div *ngIf="password.touched && password.invalid" class="error-message">
