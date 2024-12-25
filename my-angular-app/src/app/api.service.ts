@@ -11,6 +11,12 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
+  getMessages(receiverId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/messages/${receiverId}`);
+  }
+  sendMessage(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/messages`, data);
+  }
   // User registration
   createUser(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, data).pipe(
