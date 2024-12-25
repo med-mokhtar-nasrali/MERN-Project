@@ -33,145 +33,153 @@
                                     </nav>
                                 </div>
                                 <div class="d-lg-block ">
-                                    <a routerLink="/login"><button type="button" class="btn btn-primary" data-toggle="modal">Login</button></a>
+
                                 </div>
-                               
-                            </div>
-                            <!-- Mobile Menu -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Header End --> 
-        </div>
-    </header>
-    <main>
-        <!--? slider Area Start-->
-        <div class="slider-area ">
-            <div class="slider-active">
-                <!-- Single Slider -->
-                <div class="single-slider slider-height d-flex align-items-center">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-9 col-lg-9 col-md-9">
-                                <div class="hero__caption">
-                                    <h1 data-animation="fadeInLeft" data-delay=".4s">We belive good food offer great
-                                        smile</h1>
-                                    <!-- Hero-btn -->
+                                <p style="cursor:zoom-in"
+                                    onclick="document.getElementById('modal01').style.display='block'"
+                                    class="btn btn-primary">login</p>
+
+                                <div id="modal01" class="w3-modal">
+                                    <span class="w5-button w3-red w3-xxlarge w3-display-topright"
+                                        onclick="document.getElementById('modal01').style.display='none'">&times;</span>
+
+                                    <div class="mt-5 mb-0"><app-login></app-login> </div>
                                 </div>
+
+                                <!-- <div id="modal02" class="w3-modal">
+                                        <span class="w5-button w3-red w3-xxlarge w3-display-topright"
+                                            onclick="document.getElementById('modal02').style.display='none'">&times;</span>
+
+                                        <div class="mt-5 mb-0"><app-login></app-login>
+                                        </div>
+                                    </div> -->
                             </div>
                         </div>
+
                     </div>
-                </div>
-
-            </div>
-        </div>
-        <!--? About Area Start -->
-        <div class="about-low-area section-padding30">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="about-caption mb-50">
-                            <!-- Section Tittle -->
-                            <div class="section-tittle mb-35">
-                                <h2> Welcome to [Website Name] – Your Personal Recipe Matchmaker!!</h2>
-                            </div>
-                            <p>
-                                Ever opened your fridge or pantry to find a handful of random ingredients—some half-used
-                                vegetables, a can of beans, a bottle of soy sauce—and wondered, What can I cook with
-                                this? Maybe you’re living alone, and cooking a full meal feels like too much effort, but
-                                you’re craving something new and satisfying. Or perhaps you’re a busy university
-                                student, trying to balance studies and social life, with a kitchen that feels more like
-                                a game of culinary roulette.
-
-                                Whether you're a newlywed navigating the art of cooking together or simply someone who
-                                wants to make the most out of their groceries, [Website Name] is here to help! Enter
-                                your ingredients, and we’ll transform them into simple, delicious recipes tailored to
-                                your taste and skill level.
-
-                                No more waste, no more stress—just great food from what you already have. Let’s get
-                                cooking!
-                                .</p>
-                        </div>
-                        <div class="row">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <!-- about-img -->
-                        <div class="about-img ">
-
-                            <img src=" ../img/gallery/cooke.jpg" alt="">
-                        </div>
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- About Area End -->
-        <!--? gallery Products Start -->
-        <app-gallery></app-gallery>
-        <!-- gallery Products End -->
-        <!--? About-2 Area Start -->
-        <div class="about-area2 section-padding30">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-12">
-                        <!-- about-img -->
-                        <div class="about-img ">
-                            <img src="../img/gallery/food/StockCake-Couples_Cooking_Together_1734955057.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="about-caption mb-50">
-                            <!-- Section Tittle -->
-                            <div class="section-tittle mb-35">
-                                <h2>Welcome to [Name of the Project]!</h2>
-                            </div>
-                            <p class="pera-top">Have a fridge full of ingredients but no idea what to make? [Name of the
-                                Project] is here to save the day. We take your available ingredients and turn them into
-                                mouth-watering recipes tailored to your taste and preferences. </p>
 
-                            <div class="mb-65 pera-bottom">
-                                <p>🌟 Instant Recipe Generation</p>
-                                <p>Effortlessly create dishes using the ingredients you already have. No more food waste
-                                    or last-minute grocery runs!</p>
-                                <p>💬 Empowering Community</p>
-                                <p>Join a vibrant community of food enthusiasts. Share your culinary creations, learn
-                                    from others, and swap tips for better cooking.</p>
-                                <p>🌟 Instant Recipe Generation</p>
-                                <p>Effortlessly create dishes using the ingredients you already have. No more food waste
-                                    or last-minute grocery runs!</p>
-                                <p>🌱 Sustainable Cooking</p>
-                                <p>Reduce waste by utilizing every ingredient in your kitchen and making eco-friendly
-                                    meal choices.</p>
-                                <p>🎨 Simple, Visual Experienc</p>
-                                <p>Navigate through a clean, intuitive interface that makes finding and following
-                                    recipes a joy.</p>
-                            </div>
+<!-- Header End -->
+</header>
 
+<main>
+    <!--? slider Area Start-->
+    <div class="slider-area ">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div class="single-slider slider-height d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-9 col-lg-9 col-md-9">
+                            <div class="hero__caption">
+                                <h1 data-animation="fadeInLeft" data-delay=".4s">We belive good food offer great
+                                    smile</h1>
+                                <!-- Hero-btn -->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
-        <!-- About-2 Area End -->
-        <!--? Booking Room Start-->
-        <div class="booking-area section-bg pt-120 pb-130" data-background="assets/img/gallery/section_bg04.png">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12"> 
-                        
-                        <div class=" bgigm ">
-                            <!-- Single Select Box -->
-                            <app-contacte></app-contacte>
+    </div>
+    <!--? About Area Start -->
+    <div class="about-low-area section-padding30">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12">
+                    <div class="about-caption mb-50">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle mb-35">
+                            <h2> Welcome to Cook Me – Your Personal Recipe Matchmaker!!</h2>
+                        </div>
+                        <p>
+                            Ever opened your fridge or pantry to find a handful of random ingredients—some half-used
+                            vegetables, a can of beans, a bottle of soy sauce—and wondered, What can I cook with
+                            this? Maybe you’re living alone, Or perhaps you’re a busy university
+                            student,
+                            Whether you're a newlywed navigating the art of cooking together or simply someone who
+                            wants to make the most out of their groceries, [Website Name] is here to help! Enter
+                            your ingredients, and we’ll transform them into simple, delicious recipes tailored to
+                            your taste and skill level.
+
+                            No more waste, no more stress—just great food from what you already have. Let’s get
+                            cooking!
+                            .</p>
+                    </div>
+                    <div class="row">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <!-- about-img -->
+                    <div class="about-img ">
+
+                        <img src=" ../img/gallery/cooke.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--? gallery Products Start -->
+    <app-gallery></app-gallery>
+    <div class="about-area2 section-padding30">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12">
+                    <!-- about-img -->
+                    <div class="about-img ">
+                        <img src="../img/gallery/food/StockCake-Couples_Cooking_Together_1734955057.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="about-caption mb-65">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle mb-35">
+                            <h2>Welcome to [Cook Me]!</h2>
+                        </div>
+                        <p class="pera-top">Have a fridge full of ingredients but no idea what to make? [Cook ME] is
+                            here to save the day. We take your available ingredients and turn them into
+                            mouth-watering recipes tailored to your taste and preferences. </p>
+
+                        <div class="mb-65 pera-bottom">
+                            <p>🌟 Instant Recipe Generation</p>
+                            <p>Effortlessly create dishes using the ingredients you already have. No more food waste
+                                or last-minute grocery runs!</p>
+                            <p>💬 Empowering Community</p>
+                            <p>Join a vibrant community of food enthusiasts. Share your culinary creations, learn
+                                from others, and swap tips for better cooking.</p>
+                            <p>🌟 Instant Recipe Generation</p>
+                            <p>Effortlessly create dishes using the ingredients you already have. No more food waste
+                                or last-minute grocery runs!</p>
+
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+    <!-- About-2 Area End -->
+    <!--? Booking Room Start-->
+    <div class="booking-area section-bg pt-120 pb-130" data-background="assets/img/gallery/section_bg04.png">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+
+                    <div class=" bgigm ">
+                        <!-- Single Select Box -->
+                        <app-contacte></app-contacte>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 </div>
-
