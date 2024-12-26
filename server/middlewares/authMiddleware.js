@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
+import User from "../models/user.model.js";
 
-const authenticateToken = (req, res, next) => {
-    // Extract token from the 'Authorization' header
+const authenticateToken = async (req, res, next) => {
     const token = req.headers["authorization"]?.split(" ")[1];  // Expecting "Bearer <token>"
 
     if (!token) {
@@ -11,11 +11,12 @@ const authenticateToken = (req, res, next) => {
     try {
         // Verify the token using the secret key
         const verified = jwt.verify(token, process.env.JWT_SECRET);
+        const user = await User.findById(verified.id);
+        if (!user) {
+            return res.status(404).json({ message: "User not found." });
+        }
 
-        // Attach user info from the token to the request object
-        req.user = verified;
-
-        // Proceed to the next middleware or route handler
+        req.user = user;  // Store the user in the request object
         next();
     } catch (err) {
         console.error("Token verification error:", err);

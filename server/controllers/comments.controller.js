@@ -6,8 +6,8 @@ import mongoose from "mongoose";
 export const addCommentToRecipe = async (req, res) => {
     try {
         const { id } = req.params; // ID of the recipe to comment on
-        const { commentMessage , commentedBy} = req.body; // The comment message
-        // const userId = req.user?._id; // Assuming user ID is extracted from authentication middleware
+        const { commentMessage } = req.body; // The comment message
+        const commentedBy = req.user._id; // Extract user ID from authentication middleware
 
         // Validate recipe ID format
         if (!mongoose.Types.ObjectId.isValid(id)) {

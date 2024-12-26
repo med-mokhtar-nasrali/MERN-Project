@@ -1,0 +1,14 @@
+<div *ngIf="recipe">
+    <h2>{{ recipe.recipeName }}</h2>
+    <p>{{ recipe.recipeDescription }}</p>
+    <p>{{ recipe.recipeDuration }}</p>
+    <p>{{ recipe.recipeImg }}</p>
+    <p>{{ recipe.recipeDirections }}</p>
+    <p>{{ recipe.recipeCategory }}</p>
+    <p>{{ recipe.recipeType }}</p>
+    <p>{{ recipe.recipeIngredients }}</p>
+</div>
+<app-comments></app-comments>
+  <div *ngIf="!recipe">
+    <p>Loading...</p>
+</div>

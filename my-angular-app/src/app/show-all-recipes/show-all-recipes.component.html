@@ -1,0 +1,16 @@
+<p>show-all-recipes works!</p>
+<div *ngIf="recipes.length">
+    <ul *ngFor="let recipes of recipes">
+      <li > <a [routerLink]="['/recipes', recipes._id]" >{{ recipes.recipeName }}</a> </li>
+      <li>{{ recipes.recipeDescription }}</li>
+      <li>{{ recipes.recipeDuration }}</li>
+      <li>{{ recipes.recipeImg }}</li>
+      <li>{{ recipes.recipeDirections }}</li>
+      <li>{{ recipes.recipeCategory }}</li>
+      <li>{{ recipes.recipeType }}</li>
+      <li>{{ recipes.recipeIngredients }}</li>
+    </ul>
+    </div>
+    <div *ngIf="!recipes.length">
+        <p>No recipes available.</p>
+</div>

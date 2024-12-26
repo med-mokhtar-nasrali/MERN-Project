@@ -29,14 +29,9 @@ router.route("/recipes/:id/comments")
     .get(getCommentsForRecipe);
     
 // Route to add a rating to a recipe
-router.route("/recipes/:id/rate")
-    .post(authenticateToken,addRatingToRecipe);
-    
-// Route to get ratings for a recipe
-router.route("/recipes/:id/ratings") 
+router.route("/recipes/:id/ratings")
+    .post(authenticateToken,addRatingToRecipe)
     .get(getRatingsForRecipe);
-    
-
     
 
 export default router;
