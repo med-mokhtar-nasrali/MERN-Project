@@ -4,15 +4,15 @@
 <div class="page-wrapper p-t-100 p-b-100 font-robo" id="bg">
   <div class="wrapper wrapper--w960">
     <div class="card card-2">
-      <div class="card-heading"></div>
+   
       <div >
-        <div *ngIf="recipe" class="card-body">
-          <div class="page-wrapper p-t-100 p-b-100 font-robo" id="div">
-            <div class="img">
+        <div *ngIf="recipe" >
+          <div class="page-wrapper " id="div">
+            <div class="imgg">
               <img src="../img/gallery/food/StockCake-Christmas_Baking_Time_1734987051.jpg" alt="">
-              <p>{{ recipe.recipeImg }}</p>
+            
             </div>
-            <div class="donne">
+            <div class="donne">  <p>{{ recipe.recipeImg }}</p>
               <div><label for="">recipeName:</label>
                 <p>{{ recipe.recipeName }}</p>
               </div>
@@ -22,9 +22,10 @@
               <div><label for="">recipeDuration:</label>
                 <p>{{ recipe.recipeDuration }}</p>
               </div>
-              <div><label for="">recipeDirections:</label>
+              <div><label for="">Recipe Directions:</label>
 
-                <p>{{ recipe.recipeDirections }}</p>
+                <p>{{ recipe.recipeDirections }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam obcaecati asperiores, quisquam quaerat, molestiae tenetur deleniti commodi maxime ducimus iure sunt eaque. Laboriosam dolorum et delectus pariatur consectetur. Neque harum ducimus tempora, perferendis tenetur qui a deleniti. Repudiandae tempore explicabo, iure nobis aut error id beatae culpa, dolorem voluptatibus quas.
+                </p>
               </div>
               <div><label for="">recipeCategory:</label>
                 <p>{{ recipe.recipeCategory }}</p>
@@ -35,13 +36,13 @@
               <div><label for="">recipeIngredients</label>
                 <p>{{ recipe.recipeIngredients }}</p>
               </div>
-
-
-              <app-comments></app-comments>
-              <div *ngIf="!recipe">
-                <p>Loading...</p>
-              </div>
-            </div>
+             
+            </div> 
+           
+          </div>
+          <app-comments></app-comments>
+          <div *ngIf="!recipe">
+            <p>Loading...</p>
           </div>
         </div>
 

@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Recipes from "../models/recipes.model.js";
 
 // Create a new recipe
@@ -86,16 +87,61 @@ async function updateOneRecipe(req, res) {
     }
 }
 
-// Delete one recipe by ID
-async function deleteOneRecipe(req, res) {
+// Function to delete a recipe
+const deleteOneRecipe = async (req, res) => {
     try {
-        const deletedRecipe = await Recipes.findByIdAndDelete(req.params.id);
-        res.json(deletedRecipe);
+        const { id } = req.params; // ID of the recipe to delete
+        const userId = req.user?._id; // User making the request
+
+        console.log('Received delete request for recipe ID:', id);
+        console.log('Request made by user ID:', userId);
+
+        // Validate recipe ID format
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            console.error('Invalid recipe ID:', id);
+            return res.status(400).json({ message: "Invalid recipe ID." });
+        }
+
+        // Check if the recipe exists and if the user is the creator
+        const recipe = await Recipes.findById(id);
+        if (!recipe) {
+            console.error('Recipe not found with ID:', id);
+            return res.status(404).json({ message: "Recipe not found." });
+        }
+
+        if (!recipe.createdBy) {
+            console.error('Recipe createdBy field is undefined');
+            return res.status(500).json({ message: "Recipe creator not defined." });
+        }
+
+        if (!userId) {
+            console.error('User ID is undefined');
+            return res.status(500).json({ message: "User ID not defined." });
+        }
+
+        if (recipe.createdBy.toString() !== userId.toString()) {
+            console.error('User ID mismatch. Recipe created by:', recipe.createdBy, 'Request made by:', userId);
+            return res.status(403).json({ message: "You are not authorized to delete this recipe." });
+        }
+
+        // Delete the recipe
+        await recipe.remove();
+        console.log('Recipe deleted successfully:', id);
+
+        res.status(200).json({
+            message: "Recipe deleted successfully!",
+        });
     } catch (error) {
-        console.error(error);
-        res.status(400).json(error);
+        console.error("Error deleting recipe:", error);
+        res.status(500).json({
+            message: "An error occurred while deleting the recipe.",
+            error: error.message,
+        });
     }
-}
+};
+
+
+
 
 export {
     create,
