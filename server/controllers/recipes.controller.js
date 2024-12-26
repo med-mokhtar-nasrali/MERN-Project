@@ -49,7 +49,7 @@ async function create(req, res) {
 // Show all recipes
 async function getAllRecipes(req, res) {
     try {
-        const allRecipes = await Recipes.find().populate("postedBy", "username email");
+        const allRecipes = await Recipes.find().populate("postedBy", "firstName lastName");
         res.json(allRecipes);
     } catch (error) {
         console.error(error);
@@ -137,6 +137,34 @@ const deleteOneRecipe = async (req, res) => {
             message: "An error occurred while deleting the recipe.",
             error: error.message,
         });
+    }
+};
+
+// Function to get all recipes
+export const getAllRecipesAdmin = async (req, res) => {
+    try {
+        const recipes = await Recipes.find();
+        if (!recipes) return res.status(404).json({ error: 'No recipes found' });
+
+        res.status(200).json(recipes);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to fetch recipes', details: err.message });
+    }
+};
+
+// Function to delete a recipe (admin only)
+export const deleteRecipeAdmin = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // Ensure the recipe exists
+        const recipe = await Recipes.findById(id);
+        if (!recipe) return res.status(404).json({ message: 'Recipe not found.' });
+
+        await recipe.deleteOne({ _id: id });
+        res.status(200).json({ message: 'Recipe deleted successfully.' });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to delete recipe', details: err.message });
     }
 };
 
