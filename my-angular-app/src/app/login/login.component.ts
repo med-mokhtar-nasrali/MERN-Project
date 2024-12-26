@@ -29,15 +29,22 @@ export class LoginComponent {
         // Store the JWT token in local storage
         localStorage.setItem('token', response.token);
 
+        // Store the user role in local storage
+        localStorage.setItem('userRole', response.role);
+        console.log(response.role);
+
         // Optionally, store the user ID or other necessary info
         localStorage.setItem('userId', response.id);
 
-        // Redirect to a protected route (e.g., home)
-        this.router.navigate(['/recipes']);
+        // Redirect based on user role
+        if (response.role === 'admin') {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/recipes']);
+        }
       },
       error: (error) => {
         this.errorMessage = error.login.message;
-        console.log(error.login.message)
         this.successMessage = '';  // Clear success message if present
         console.error('Login error:', error);  // Log the error for debugging
       }

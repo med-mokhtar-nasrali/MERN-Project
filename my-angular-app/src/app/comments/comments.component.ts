@@ -74,5 +74,15 @@ export class CommentsComponent {
     );
   }
 
+  deleteRecipe(): void {
+    this.apiService.deleteOneRecipe(this.recipeId).subscribe(
+      () => {
+        console.log('Recipe deleted successfully');
+        // Add any additional logic, e.g., redirecting the user
+      },
+      error => console.error('Error deleting recipe', error)
+    );
+  }
+
 }
 

@@ -80,12 +80,6 @@ export class ApiService {
     );
   }
 
-  // Delete a recipe
-  deleteRecipe(id: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/recipes/${id}`).pipe(
-      catchError(this.handleError)  // Handle errors gracefully
-    );
-  }
 
   // Method to add a rating to a recipe
   addRatingToRecipe(id: string, ratingData: any): Observable<any> {
@@ -100,6 +94,22 @@ export class ApiService {
       catchError(this.handleError)  // Handle errors gracefully
     );
   }
+
+  // Method to delete a recipe
+  deleteOneRecipe(id: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/recipes/${id}`).pipe(
+      catchError(this.handleError)  // Handle errors gracefully
+    );
+  }
+
+  getAllUsersAdmin(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get(`${this.baseUrl}/admin`, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 
   // Error handler
   private handleError(error: any): Observable<never> {

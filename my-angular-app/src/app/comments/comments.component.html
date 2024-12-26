@@ -2,11 +2,16 @@
   <h3>Comments</h3>
   <ul>
     <li *ngFor="let comment of comments">
-      <strong>{{ comment.commentedBy.email }}</strong>: {{ comment.commentMessage }}
+      <strong>{{ comment.commentedBy.firstName }} {{ comment.commentedBy.lastName }}</strong>: {{ comment.commentMessage }}
       <div *ngFor="let rating of ratings"> {{ rating.ratingValue }} stars
       <p>{{ comment.createdAt | date:'short' }}</p> <!-- Assuming there's a createdAt field -->
       </div>
     </li>
+    <!-- <li>
+      <div>
+        <button (click)="deleteRecipe()">Delete Recipe</button>
+      </div>
+    </li> -->
     
   </ul>
 </div>

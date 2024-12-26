@@ -60,7 +60,7 @@ export const getCommentsForRecipe = async (req, res) => {
         // Fetch comments for the recipe
         const comments = await Comments.find({ commentedOn: id }).populate(
             "commentedBy",
-            "username email" // Assuming User model has these fields
+            "firstName lastName" // Assuming User model has these fields
         );
 
         res.status(200).json({
