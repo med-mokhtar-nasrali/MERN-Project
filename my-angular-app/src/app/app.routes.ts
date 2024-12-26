@@ -7,8 +7,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ChatComponent } from './chat/chat.component';
 import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
 import { ErrComponent } from './err/err.component';
+import { ShowAllRecipesComponent } from './show-all-recipes/show-all-recipes.component';
+import { ViewOneRecipeComponent } from './view-one-recipe/view-one-recipe.component';
+import { CommentsComponent } from './comments/comments.component';
 
 export const routes: Routes = [
+
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignUpComponent },
@@ -16,7 +20,11 @@ export const routes: Routes = [
     { path: 'create', component: CreateRecipeComponent },
     { path: 'nav', component: NavbarComponent },
     { path: "chat/:id", component: ChatComponent },
-    {path:"**",component:ErrComponent}
+    { path: "recipes", component: ShowAllRecipesComponent },
+    { path: "recipes/:id", component: ViewOneRecipeComponent },
+    { path: "recipes/:id/comments", component: CommentsComponent },
+    { path: "recipes/:id/ratings", component: CommentsComponent },
+     {path:"**",component:ErrComponent}
 
-];
 
+]; 

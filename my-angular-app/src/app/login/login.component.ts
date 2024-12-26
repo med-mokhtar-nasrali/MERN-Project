@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms'; 
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { RouterModule, Router } from '@angular/router';  // Correct import of Router from @angular/router
 import { ApiService } from '../api.service';
@@ -16,7 +16,7 @@ export class LoginComponent {
   errorMessage = '';  // Error message to display on failure
   successMessage = '';  // Success message on successful login
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService, private router: Router) { }
 
   // Method to handle form submission
   loginUser(): void {
@@ -25,15 +25,15 @@ export class LoginComponent {
         console.log(response);  // Log the response to see the token and user ID
         this.successMessage = 'Login successful!';  // Show success message
         this.errorMessage = '';  // Clear any previous error messages
-        
+
         // Store the JWT token in local storage
         localStorage.setItem('token', response.token);
-        
+
         // Optionally, store the user ID or other necessary info
         localStorage.setItem('userId', response.id);
 
         // Redirect to a protected route (e.g., home)
-        this.router.navigate(['/all-post']);
+        this.router.navigate(['/recipes']);
       },
       error: (error) => {
         this.errorMessage = error.login.message;

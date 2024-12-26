@@ -9,7 +9,7 @@ import { catchError } from 'rxjs/operators';
 export class ApiService {
   private readonly baseUrl = 'http://localhost:8000/api';  // Base URL for API
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getMessages(receiverId: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/messages/${receiverId}`);
@@ -26,7 +26,7 @@ export class ApiService {
 
   // User login
   login(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`,data).pipe(
+    return this.http.post(`${this.baseUrl}/login`, data).pipe(
       catchError(this.handleError)  // Handle errors gracefully
     );
   }
@@ -46,6 +46,27 @@ export class ApiService {
   // Fetch all recipes
   getRecipes(): Observable<any> {
     return this.http.get(`${this.baseUrl}/recipes`).pipe(
+      catchError(this.handleError)  // Handle errors gracefully
+    );
+  }
+
+  // Fetch on recipe by ID
+  getOneRecipe(id: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/recipes/${id}`).pipe(
+      catchError(this.handleError)  // Handle errors gracefully
+    );
+  }
+
+  // Fetch comments for a recipe by ID
+  getCommentsByRecipeId(id: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/recipes/${id}/comments`).pipe(
+      catchError(this.handleError)  // Handle errors gracefully
+    );
+  }
+
+  // Method to add a comment to a recipe
+  addCommentToRecipe(id: string, commentData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/recipes/${id}/comments`, commentData).pipe(
       catchError(this.handleError)  // Handle errors gracefully
     );
   }
@@ -71,15 +92,28 @@ export class ApiService {
     );
   }
 
+  // Method to add a rating to a recipe
+  addRatingToRecipe(id: string, ratingData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/recipes/${id}/ratings`, ratingData).pipe(
+      catchError(this.handleError)  // Handle errors gracefully
+    );
+  }
+
+  // Method to fetch ratings for a recipe
+  getRatingsByRecipeId(id: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/recipes/${id}/ratings`).pipe(
+      catchError(this.handleError)  // Handle errors gracefully
+    );
+  }
+
   // Error handler
   private handleError(error: any): Observable<never> {
-    console.error('An error occurred:', error.error.errors);  // Log error to console
+    console.error('An error occurred:', error);  // Log error to console
     // Generate a more descriptive error message
-    if(error.error.errors)
-    {
-      const errorMessage = error.error.errors ;
+    if (error.error.errors) {
+      const errorMessage = error.error.errors;
       return throwError(() => errorMessage);  // Return error message
-    }else{
+    } else {
       return throwError(() => error.error);
     }
     // console.error('*',errorMessage)

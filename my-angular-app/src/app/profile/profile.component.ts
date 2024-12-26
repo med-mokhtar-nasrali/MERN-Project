@@ -7,7 +7,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
   selector: 'app-profile',
   imports: [EditeComponent,RouterModule,NavbarComponent],
   templateUrl: './profile.component.html',
-  styleUrls:['./profile.component.css','../profile/profile.component.css']
+  styleUrls: ['./profile.component.css', '../profile/profile.component.css']
 })
 export class ProfileComponent {
 

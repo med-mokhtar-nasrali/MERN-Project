@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+
+<div class="page-wrapper p-t-100 p-b-100 font-robo" id="bg">
+  <div class="wrapper wrapper--w960">
+    <div class="card card-2">
+      <div class="card-heading"></div>
+      <div >
+        <div *ngIf="recipe" class="card-body">
+          <div class="page-wrapper p-t-100 p-b-100 font-robo" id="div">
+            <div class="img">
+              <img src="../img/gallery/food/StockCake-Christmas_Baking_Time_1734987051.jpg" alt="">
+              <p>{{ recipe.recipeImg }}</p>
+            </div>
+            <div class="donne">
+              <div><label for="">recipeName:</label>
+                <p>{{ recipe.recipeName }}</p>
+              </div>
+              <div><label for="">recipeDescription:</label>
+                <p>{{ recipe.recipeDescription }}</p>
+              </div>
+              <div><label for="">recipeDuration:</label>
+                <p>{{ recipe.recipeDuration }}</p>
+              </div>
+              <div><label for="">recipeDirections:</label>
+
+                <p>{{ recipe.recipeDirections }}</p>
+              </div>
+              <div><label for="">recipeCategory:</label>
+                <p>{{ recipe.recipeCategory }}</p>
+              </div>
+              <div><label for="">recipeType:</label>
+                <p>{{ recipe.recipeType }}</p>
+              </div>
+              <div><label for="">recipeIngredients</label>
+                <p>{{ recipe.recipeIngredients }}</p>
+              </div>
+
+
+              <app-comments></app-comments>
+              <div *ngIf="!recipe">
+                <p>Loading...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+      </div>
+
+    </div>
+  </div>
+  </div>
