@@ -12,12 +12,20 @@
                         <div *ngIf="errorMessage.recipeName" class="error">{{ errorMessage.recipeName.message }}</div>
 
                     </div>
-                    <div class="container">
-                        <input  type="datetime" placeholder=""   [(ngModel)]="newRespi.RecipeIngredients"name="RecipeIngredients" class="input">
-                        <label class="label">RecipeIngredients* </label> 
+                    
+                    <mat-form-field>
+                        <mat-label>Toppings</mat-label>
+                        <mat-select [formControl]="toppings" multiple>
+                          @for (topping of toppingList; track topping) {
+                            <mat-option [value]="topping">{{topping}}</mat-option>
+                          }
+                        </mat-select>
+                      </mat-form-field>
+                      
+                      
                         <div *ngIf="errorMessage.RecipeIngredients" class="error">{{ errorMessage.RecipeIngredients.message }}</div>
 
-                    </div>
+                    
                     <div class="container">
                         <input  type="text" placeholder="" name="recipeDuration"  [(ngModel)]="newRespi.recipeDuration" class="input">
                         <label class="label">RecipeDuration* </label> 

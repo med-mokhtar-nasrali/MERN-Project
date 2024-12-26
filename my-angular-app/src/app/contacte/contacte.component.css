@@ -17,7 +17,6 @@
 }.container .label {
 	font-size: 15px;
 	position: absolute;
-	margin-left:-80%;
 	transition: 0.3s;
 	pointer-events: none;
   }

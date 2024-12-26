@@ -31,13 +31,18 @@ export class ApiService {
     );
   }
 
+
   // User logout
   logout(): Observable<any> {
     return this.http.post(`${this.baseUrl}/logout`, {}).pipe(
       catchError(this.handleError)  // Handle errors gracefully
     );
+  } 
+  updateuser(id: string, data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${id}`, data).pipe(
+      catchError(this.handleError)  // Handle errors gracefully
+    );
   }
-
   // Fetch all recipes
   getRecipes(): Observable<any> {
     return this.http.get(`${this.baseUrl}/recipes`).pipe(

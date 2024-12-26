@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { CreateComponent } from '../create/create.component';
+import { Component } from '@angular/core'
+import { CreateRecipeComponent } from '../create-recipe/create-recipe.component';
+
 
 @Component({
   selector: 'app-navbar',
-  imports: [CreateComponent],
+  imports: [CreateRecipeComponent],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css','../home/home.component.css']
 })

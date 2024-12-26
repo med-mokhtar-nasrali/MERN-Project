@@ -1,7 +1,10 @@
 .font-robo {
 	font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
 }
-
+.error-message{
+	color: red; 
+	font-size: larger;
+}
 .row {
 	display: -webkit-box;
 	display: -webkit-flex;
