@@ -136,6 +136,14 @@ export class ApiService {
     );
   }
 
+  // Method to count all users
+  countUsers(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.get(`${this.baseUrl}/users/count`, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
 
   // Error handler
   private handleError(error: any): Observable<never> {

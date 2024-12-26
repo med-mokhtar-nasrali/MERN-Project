@@ -160,3 +160,14 @@ export const deleteUserAdmin = async (req, res) => {
     }
 };
 
+// Function to count all users
+export const countAllUsersAdmin = async (req, res) => {
+    try {
+        const userCount = await User.countDocuments();
+        res.status(200).json({ count: userCount });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to count users', details: err.message });
+    }
+};
+
+

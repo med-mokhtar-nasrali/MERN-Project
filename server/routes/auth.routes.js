@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerUser, loginUser, updateUser, verifyToken, logoutUser, getAllUsers, getAllUsersAdmin, deleteUserAdmin } from '../controllers/authController.js';
+import { registerUser, loginUser, updateUser, verifyToken, logoutUser, getAllUsers, getAllUsersAdmin, deleteUserAdmin, countAllUsersAdmin } from '../controllers/authController.js';
 import authenticateToken from '../middlewares/authMiddleware.js'; // Assuming you have authentication middleware
 
 const router = express.Router();
@@ -29,6 +29,11 @@ const checkAdmin = (req, res, next) => {
 };
 // Route to delete a user (admin only)
 router.delete('/users/:id', authenticateToken, checkAdmin, deleteUserAdmin);
+
+
+// Route to count all users (only accessible by admin)
+router.get('/users/count', authenticateToken, countAllUsersAdmin);
+
 
 
 export default router;

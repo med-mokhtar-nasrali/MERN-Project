@@ -12,6 +12,7 @@ export class AdminDashboardComponent implements OnInit {
 
   users: any[] = [];
   recipes: any[] = [];
+  userCount: number | null = null;
   currentUserRole: string | null = null;
 
   constructor(private apiService: ApiService) { }
@@ -23,6 +24,7 @@ export class AdminDashboardComponent implements OnInit {
     if (this.currentUserRole === 'admin') {
       this.fetchUsers();
       this.fetchRecipes();
+      this.fetchUserCount();
     } else {
       console.error('Access denied. Admins only.');
       alert('Access denied. Admins only.');
@@ -66,6 +68,16 @@ export class AdminDashboardComponent implements OnInit {
         this.recipes = this.recipes.filter(recipe => recipe._id !== recipeId);
       },
       error => console.error('Error deleting recipe', error)
+    );
+  }
+
+  fetchUserCount(): void {
+    this.apiService.countUsers().subscribe(
+      data => {
+        console.log('User count:', data.count);
+        this.userCount = data.count;
+      },
+      error => console.error('Error counting users', error)
     );
   }
 }
