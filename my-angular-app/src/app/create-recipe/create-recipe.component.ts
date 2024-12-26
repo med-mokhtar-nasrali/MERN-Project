@@ -12,14 +12,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './create-recipe.component.css'
 })
 export class CreateRecipeComponent {
-newRespi: NewRes = {}
+  newRespi: NewRes = {}
   errorMessage: any = {}
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService, private router: Router) { }
 
   addrecipe(): void {
     this.apiService.createRecipe(this.newRespi).subscribe({
-      next: (res) => this.router.navigate(['/all-post']),
+      next: (res) => this.router.navigate(['/recipes']),
       error: (err) => console.log(err)
     })
   }

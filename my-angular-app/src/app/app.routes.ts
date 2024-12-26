@@ -16,7 +16,7 @@ export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignUpComponent },
-    { path: 'porfil', component: ProfileComponent },
+    { path: 'profile', component: ProfileComponent },
     { path: 'create', component: CreateRecipeComponent },
     { path: 'nav', component: NavbarComponent },
     { path: "chat/:id", component: ChatComponent },
