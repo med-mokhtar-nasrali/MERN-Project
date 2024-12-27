@@ -11,12 +11,29 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getMessages(receiverId: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/messages/${receiverId}`);
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.append('Authorization', `Bearer ${token}`);
+    }
+    return headers;
   }
+
+  getMessages(senderId: string, receiverId: string): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<any>(`${this.baseUrl}/messages/${senderId}/${receiverId}`, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+  
   sendMessage(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/messages`, data);
+    const headers = this.getAuthHeaders();
+    return this.http.post(`${this.baseUrl}/messages/${data.senderId}/${data.receiverId}`, data, { headers }).pipe(
+      catchError(this.handleError)
+    );
   }
+
   // User registration
   createUser(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, data).pipe(
@@ -26,57 +43,58 @@ export class ApiService {
 
   // User login
   login(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`,data).pipe(
+    return this.http.post(`${this.baseUrl}/login`, data).pipe(
       catchError(this.handleError)  // Handle errors gracefully
     );
   }
 
   // User logout
   logout(): Observable<any> {
-    return this.http.post(`${this.baseUrl}/logout`, {}).pipe(
+    return this.http.post(`${this.baseUrl}/logout`, {}, { headers: this.getAuthHeaders() }).pipe(
       catchError(this.handleError)  // Handle errors gracefully
     );
   }
 
   // Fetch all recipes
   getRecipes(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/recipes`).pipe(
+    const headers = this.getAuthHeaders(); // Add auth headers if required
+    return this.http.get(`${this.baseUrl}/recipes`, { headers }).pipe(
       catchError(this.handleError)  // Handle errors gracefully
     );
   }
 
   // Create a new recipe
   createRecipe(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/recipes`, data).pipe(
+    const headers = this.getAuthHeaders(); // Add auth headers if required
+    return this.http.post(`${this.baseUrl}/recipes`, data, { headers }).pipe(
       catchError(this.handleError)  // Handle errors gracefully
     );
   }
 
   // Update an existing recipe
   updateRecipe(id: string, data: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/recipes/${id}`, data).pipe(
+    const headers = this.getAuthHeaders(); // Add auth headers if required
+    return this.http.put(`${this.baseUrl}/recipes/${id}`, data, { headers }).pipe(
       catchError(this.handleError)  // Handle errors gracefully
     );
   }
 
   // Delete a recipe
   deleteRecipe(id: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/recipes/${id}`).pipe(
+    const headers = this.getAuthHeaders(); // Add auth headers if required
+    return this.http.delete(`${this.baseUrl}/recipes/${id}`, { headers }).pipe(
       catchError(this.handleError)  // Handle errors gracefully
     );
   }
 
-  // Error handler
   private handleError(error: any): Observable<never> {
-    console.error('An error occurred:', error.error.errors);  // Log error to console
-    // Generate a more descriptive error message
-    if(error.error.errors)
-    {
-      const errorMessage = error.error.errors ;
-      return throwError(() => errorMessage);  // Return error message
-    }else{
-      return throwError(() => error.error);
+    console.error('An error occurred:', error.error);
+    let errorMessage = 'An unknown error occurred!';
+    if (error.error.errors) {
+      errorMessage = error.error.errors.join(', ') || 'Error occurred while processing your request.';
+    } else if (error.error) {
+      errorMessage = error.error.message || error.error;
     }
-    // console.error('*',errorMessage)
+    return throwError(() => new Error(errorMessage));
   }
 }

@@ -1,22 +1,17 @@
-
-<div class="continar">
-    <div class="sidebar">
-        <div class="contact">
-            <div class="avatar online"></div>
-            <div class="contact-info">
-                <a href="/messages/"><h4></h4> </a> 
-            </div>
-        </div>
+<div id="chat">
+  <h2>Chat with </h2> <!-- Display the contact's name -->
+  <div id="messages">
+    <div *ngFor="let msg of messages" class="message" 
+      [ngClass]="{
+        'sender': message.senderId === msg.sender_id, 
+        'receiver': message.senderId !== msg.sender_id
+      }">
+      <p id="mesg">{{ msg.message }}</p>
     </div>
-    <div id="chat">
-        <h2>Chat with </h2>
-        <div id="messages">
-    <div class="message sender receiver "></div>
-</div>
-<div id="messages"></div>
-<form id="messageForm" >
-    <input id="messageInput" name="message" type="text" required>
-    <button type="submit">Send</button>
-</form>
-</div>
+  </div>
+
+  <form id="messageForm" (ngSubmit)="addMessage()">
+    <input id="messageInput" name="message" [(ngModel)]="message.message" type="text" required>
+    <button type="submit" [disabled]="loading">Send</button>
+  </form>
 </div>

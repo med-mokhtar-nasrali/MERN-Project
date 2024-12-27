@@ -3,17 +3,17 @@ import {
     getMessages,
     sendMessage,
     deleteMessage,
-} from '../controllers/messageController.js';
+} from '../controllers/chatController.js';
 
-const router = express.Router();
+const msgRouter = express.Router();
 
 // Get messages between two users
-router.get('/messages/:senderId/:receiverId', getMessages);
+msgRouter.get('/messages/:senderId/:receiverId', getMessages);
 
 // Send a new message
-router.post('/messages/:senderId/:receiverId', sendMessage);
+msgRouter.post('/messages/:senderId/:receiverId', sendMessage);
 
 // Delete a message by ID (optional)
-router.delete('/messages/:messageId', deleteMessage);
+msgRouter.delete('/messages/:messageId', deleteMessage);
 
-export default router;
+export default msgRouter;
