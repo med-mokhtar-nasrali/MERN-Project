@@ -7,7 +7,7 @@ import { SignUpComponent } from '../sign-up/sign-up.component';
 
 @Component({
   selector: 'app-home',
-  imports: [GalleryComponent,ContacteComponent,RouterModule,LoginComponent,SignUpComponent],
+  imports: [GalleryComponent,ContacteComponent,RouterModule,LoginComponent],
   templateUrl: './home.component.html',
   styleUrls:["./home.component.css"]
 })

@@ -11,12 +11,29 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getMessages(receiverId: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/messages/${receiverId}`);
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.append('Authorization', `Bearer ${token}`);
+    }
+    return headers;
   }
+
+  getMessages(senderId: string, receiverId: string): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<any>(`${this.baseUrl}/messages/${senderId}/${receiverId}`, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+  
   sendMessage(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/messages`, data);
+    const headers = this.getAuthHeaders();
+    return this.http.post(`${this.baseUrl}/messages/${data.senderId}/${data.receiverId}`, data, { headers }).pipe(
+      catchError(this.handleError)
+    );
   }
+
   // User registration
   createUser(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, data).pipe(
@@ -31,18 +48,13 @@ export class ApiService {
     );
   }
 
-
   // User logout
   logout(): Observable<any> {
     return this.http.post(`${this.baseUrl}/logout`, {}).pipe(
       catchError(this.handleError)  // Handle errors gracefully
     );
-  } 
-  updateuser(id: string, data: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id}`, data).pipe(
-      catchError(this.handleError)  // Handle errors gracefully
-    );
   }
+
   // Fetch all recipes
   getRecipes(): Observable<any> {
     return this.http.get(`${this.baseUrl}/recipes`).pipe(
