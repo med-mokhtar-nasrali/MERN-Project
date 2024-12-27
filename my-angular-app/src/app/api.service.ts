@@ -107,6 +107,7 @@ export class ApiService {
     );
   }
 
+  // Method to show all users for admin
   getAllUsersAdmin(): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
@@ -115,6 +116,39 @@ export class ApiService {
     );
   }
 
+  // Method to fetch all recipes (only accessible by admin)
+  getAllRecipes(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.get(`${this.baseUrl}/recipes/admin`, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteUser(userId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.delete(`${this.baseUrl}/users/${userId}`, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteRecipe(recipeId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.delete(`${this.baseUrl}/recipes/${recipeId}/admin`, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  // Method to count all users
+  countUsers(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.get(`${this.baseUrl}/users/count`, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
 
   // Error handler
   private handleError(error: any): Observable<never> {
@@ -129,3 +163,9 @@ export class ApiService {
     // console.error('*',errorMessage)
   }
 }
+
+
+
+
+
+

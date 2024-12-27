@@ -17,7 +17,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   styleUrl: './create-recipe.component.css'
 })
 export class CreateRecipeComponent {
-newRespi: NewRes = {}
+  newRespi: NewRes = {}
   errorMessage: any = {}
 
   toppings = new FormControl('');
@@ -26,7 +26,7 @@ newRespi: NewRes = {}
 
   addrecipe(): void {
     this.apiService.createRecipe(this.newRespi).subscribe({
-      next: (res) => this.router.navigate(['/all-post']),
+      next: (res) => this.router.navigate(['/recipes']),
       error: (err) => console.log(err)
     })
   } 
