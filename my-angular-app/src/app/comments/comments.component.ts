@@ -37,7 +37,9 @@ export class CommentsComponent {
     this.apiService.getCommentsByRecipeId(this.recipeId).subscribe(
       {
         next: (data) => { this.comments = data.comments; console.log(data.comments[0].commentedBy) },
-
+// tjib ratings kolla 
+//loop 3la comments 
+// koll comment[i] bech tzidou rating key ; value bech tjibha mel ratings 
         error: (error) => console.error('Error fetching comments', error)
       }
     );
