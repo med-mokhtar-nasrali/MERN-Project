@@ -1,3 +1,24 @@
+<<<<<<< HEAD
+=======
+<div *ngIf="comments.length > 0">
+  <h3>Comments</h3>
+  <ul>
+    <li *ngFor="let comment of comments">
+      <strong>{{ comment.commentedBy.firstName }} {{ comment.commentedBy.lastName }}</strong>: {{ comment.commentMessage
+      }}
+      <p>{{ comment.createdAt | date:'short' }}</p> <!-- Assuming there's a createdAt field -->
+    </li>
+    <div *ngFor="let rating of ratings"> {{ rating.ratingValue }} stars
+    </div>
+    <!-- <li>
+      <div>
+        <button (click)="deleteRecipe()">Delete Recipe</button>
+      </div>
+    </li> -->
+
+  </ul>
+</div>
+>>>>>>> 04b50555640bc8226f39ac43cbfbdf7c7dbf2150
 <div *ngIf="comments.length === 0">
   <p>No comments yet. Be the first to comment!</p>
 </div>
