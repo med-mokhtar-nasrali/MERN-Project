@@ -6,7 +6,12 @@ import mongoose from "mongoose";
 export const addRatingToRecipe = async (req, res) => {
     try {
         const { id } = req.params; // ID of the recipe to rate
-        const { ratingValue, ratedBy } = req.body; // The rating value and the user who rated it
+        const { ratingValue } = req.body; // The rating value
+        const ratedBy = req.user._id; // Extract user ID from authentication middleware
+
+        console.log('Request params:', req.params);
+        console.log('Request body:', req.body);
+        console.log('Rated by user:', req.user);
 
         // Validate recipe ID format
         if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -39,6 +44,7 @@ export const addRatingToRecipe = async (req, res) => {
         });
     }
 };
+
 
 // Function to get ratings for a recipe
 export const getRatingsForRecipe = async (req, res) => {

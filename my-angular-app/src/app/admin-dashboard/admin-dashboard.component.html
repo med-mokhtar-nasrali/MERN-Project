@@ -1,0 +1,64 @@
+<div>
+  <h3>Dashboard</h3>
+</div>
+
+<hr>
+
+<div *ngIf="users.length > 0">
+  <h3>All Users</h3>
+  <table>
+    <h3>All Users: {{ userCount }}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button (click)="deleteUser(user._id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </table>
+</div>
+<div *ngIf="users.length === 0">
+  <p>No users found.</p>
+</div>
+
+<hr>
+
+<div *ngIf="recipes.length > 0">
+  <h3>All Recipes</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Recipe Name</th>
+        <th>Creation Date</th>
+        <th>Posted By</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recipe of recipes">
+        <td>{{ recipe.recipeName }}</td>
+        <td>{{ recipe.createdAt | date:'short' }}</td>
+        <td>{{ recipe.postedBy.firstName }} {{ recipe.postedBy.lastName }}</td>
+        <td>
+          <button (click)="deleteRecipe(recipe._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="recipes.length === 0">
+  <p>No recipes found.</p>
+</div>

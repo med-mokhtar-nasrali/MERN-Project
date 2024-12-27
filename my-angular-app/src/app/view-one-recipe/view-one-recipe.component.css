@@ -1,0 +1,142 @@
+/* Main container styling */
+#div { 
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;  
+  flex-direction: column;
+  width: 900px;
+  font-size: large;
+}
+
+/* Image Styling */
+img {   
+  width:100%;
+  
+}
+
+/* ========================================================================== #FONT ========================================================================== */
+.font-robo {
+  font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+}
+
+/* ========================================================================== #GRID ========================================================================== */
+#bg { 
+  background-color: #f5d5d7;
+}
+
+.col-2 {
+  width: -webkit-calc((100% - 60px) / 2);
+  width: -moz-calc((100% - 60px) / 2);
+  width: calc((100% - 60px) / 2); 
+  padding-top: 2px;
+}
+
+@media (max-width: 767px) {
+  .col-2 {
+      width: 100%;
+  }
+}
+
+/* General Reset */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/*  */
+
+/* Page Wrapper Styling */
+.page-wrapper { 
+  min-width: none;
+
+}
+
+/* Padding Utilities */
+.p-t-100 { padding-top: 100px; }
+.p-t-180 { padding-top: 180px; }
+.p-t-20 { padding-top: 20px; }
+.p-t-30 { padding-top: 30px; }
+
+.wrapper {
+  margin: 0 auto;
+}
+
+.wrapper--w960 { max-width: 960px; }
+.wrapper--w680 { max-width: 680px; }
+
+/* Card Styling */
+.card {
+  overflow: hidden;
+  border-radius: 3px;
+  background: #fff;
+}
+
+.card-2 {
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  width: 100%;
+  display: table;
+}
+
+
+/* Label Styling */
+label {
+  font-weight: bolder;
+  font-size: 15px;
+  font-family: cursive;
+  color: #333; 
+}
+
+/* Recipe Container Layout */
+.recipe {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Paragraph Styling */
+p {
+  font-family: cursive;
+  color: #333;
+}
+
+/* Section Styling */
+.donne div {
+  width: 50%;
+}
+
+/* Responsive Layout for Small Screens */
+@media (max-width: 768px) {
+  #div {
+      width: 100%; /* Full width on small screens */
+  }
+  
+  .recipe {
+      flex-direction: column; /* Stack recipe details vertically on small screens */
+      align-items: center; /* Center the content */
+  }
+
+  .donne {
+    margin-left: -50%;
+      background-color: #333;
+  }
+
+  label {
+      font-size: 14px;
+  }
+}
+
+/* Image container for fixed layout */
+.imgg {  
+  margin-top: 2%;
+ left: 25%; 
+ position:relative;
+  background-color: #333;
+  width: 50%; /* Ensure the container has 50% width */
+}
+
+/* Paragraph adjustments */
+p {
+  margin: 0px auto;
+  padding: 0px auto;
+}

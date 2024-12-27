@@ -1,6 +1,6 @@
 import express from 'express';
-import { registerUser, loginUser, updateUser, verifyToken, logoutUser, getAllUsers } from '../controllers/authController.js';
-import  authenticateToken  from '../middlewares/authMiddleware.js'; // Assuming you have authentication middleware
+import { registerUser, loginUser, updateUser, verifyToken, logoutUser, getAllUsers, getAllUsersAdmin, deleteUserAdmin, countAllUsersAdmin } from '../controllers/authController.js';
+import authenticateToken from '../middlewares/authMiddleware.js'; // Assuming you have authentication middleware
 
 const router = express.Router();
 
@@ -11,10 +11,29 @@ router.post('/login', loginUser);
 // Update user data (protected route)
 router.put('/users/:id', authenticateToken, updateUser);
 // Get all users 
-router.get('/users', authenticateToken,getAllUsers);  
+router.get('/users', authenticateToken, getAllUsers);
+
+router.get('/admin', authenticateToken, getAllUsersAdmin);
 // Verify a token (protected route)
 router.get('/verify', authenticateToken, verifyToken);
 // Logout a user (client-side action)
 router.post('/logout', logoutUser);
+
+
+// Admin check middleware
+const checkAdmin = (req, res, next) => {
+    if (req.user.role !== 'admin') {
+        return res.status(403).json({ message: "Access denied. Admins only." });
+    }
+    next();
+};
+// Route to delete a user (admin only)
+router.delete('/users/:id', authenticateToken, checkAdmin, deleteUserAdmin);
+
+
+// Route to count all users (only accessible by admin)
+router.get('/users/count', authenticateToken, countAllUsersAdmin);
+
+
 
 export default router;

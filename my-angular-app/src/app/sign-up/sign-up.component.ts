@@ -27,7 +27,7 @@ export class SignUpComponent {
         this.successMessage = 'User registered successfully!';
         this.errorMessage = ''; // Clear any previous errors
         this.newUser = {}; // Reset form after successful submission
-        this.router.navigate(['/login']);
+        this.router.navigate(['/all-post']);
       },
       error: (error) => {
         this.errorMessage = error ; // Handle backend error

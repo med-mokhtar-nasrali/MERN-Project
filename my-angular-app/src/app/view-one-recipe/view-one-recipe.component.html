@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+
+
+<div class="page-wrapper p-t-100 p-b-100 font-robo" id="bg">
+  <div class="wrapper wrapper--w960">
+    <div class="card card-2">
+   
+      <div >
+        <div *ngIf="recipe" >
+          <div class="page-wrapper " id="div">
+            <div class="imgg">
+              <img src="../img/gallery/food/StockCake-Christmas_Baking_Time_1734987051.jpg" alt="">
+            
+            </div>
+            <div class="donne">  <p>{{ recipe.recipeImg }}</p>
+              <div><label for="">recipeName:</label>
+                <p>{{ recipe.recipeName }}</p>
+              </div>
+              <div><label for="">recipeDescription:</label>
+                <p>{{ recipe.recipeDescription }}</p>
+              </div>
+              <div><label for="">recipeDuration:</label>
+                <p>{{ recipe.recipeDuration }}</p>
+              </div>
+              <div><label for="">Recipe Directions:</label>
+
+                <p>{{ recipe.recipeDirections }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam obcaecati asperiores, quisquam quaerat, molestiae tenetur deleniti commodi maxime ducimus iure sunt eaque. Laboriosam dolorum et delectus pariatur consectetur. Neque harum ducimus tempora, perferendis tenetur qui a deleniti. Repudiandae tempore explicabo, iure nobis aut error id beatae culpa, dolorem voluptatibus quas.
+                </p>
+              </div>
+              <div><label for="">recipeCategory:</label>
+                <p>{{ recipe.recipeCategory }}</p>
+              </div>
+              <div><label for="">recipeType:</label>
+                <p>{{ recipe.recipeType }}</p>
+              </div>
+              <div><label for="">recipeIngredients</label>
+                <p>{{ recipe.recipeIngredients }}</p>
+              </div>
+             
+            </div> 
+           
+          </div>
+          <app-comments></app-comments>
+          <div *ngIf="!recipe">
+            <p>Loading...</p>
+          </div>
+        </div>
+
+
+
+
+
+      </div>
+
+    </div>
+  </div>
+  </div>

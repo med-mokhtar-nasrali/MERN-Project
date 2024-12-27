@@ -6,8 +6,8 @@ import mongoose from "mongoose";
 export const addCommentToRecipe = async (req, res) => {
     try {
         const { id } = req.params; // ID of the recipe to comment on
-        const { commentMessage , commentedBy} = req.body; // The comment message
-        // const userId = req.user?._id; // Assuming user ID is extracted from authentication middleware
+        const { commentMessage } = req.body; // The comment message
+        const commentedBy = req.user._id; // Extract user ID from authentication middleware
 
         // Validate recipe ID format
         if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -60,7 +60,7 @@ export const getCommentsForRecipe = async (req, res) => {
         // Fetch comments for the recipe
         const comments = await Comments.find({ commentedOn: id }).populate(
             "commentedBy",
-            "username email" // Assuming User model has these fields
+            "firstName lastName" // Assuming User model has these fields
         );
 
         res.status(200).json({
