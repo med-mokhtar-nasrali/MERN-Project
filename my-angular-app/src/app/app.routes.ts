@@ -11,6 +11,7 @@ import { ShowAllRecipesComponent } from './show-all-recipes/show-all-recipes.com
 import { ViewOneRecipeComponent } from './view-one-recipe/view-one-recipe.component';
 import { CommentsComponent } from './comments/comments.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { SelectComponent } from './select/select.component';
 
 export const routes: Routes = [
 
@@ -27,7 +28,11 @@ export const routes: Routes = [
     { path: "recipes/:id/ratings", component: CommentsComponent },
     //  {path:"**",component:ErrComponent},
     { path: "recipes/:id/delete", component: CommentsComponent },
-    { path: "admin", component: AdminDashboardComponent }
+    { path: "admin", component: AdminDashboardComponent },
+    {
+        path:"selct",component:SelectComponent
+    }
+
 
 
 ]; 
