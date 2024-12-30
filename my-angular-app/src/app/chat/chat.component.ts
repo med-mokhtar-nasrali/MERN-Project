@@ -40,7 +40,8 @@ export class ChatComponent implements OnInit, OnDestroy {
     // Get receiver ID from route parameters
     this.route.params.subscribe((params) => {
       this.message.receiverId = params['id'];
-      this.room = `159`; // Create a room name based on user IDs
+      // Create a room name based on user IDs (unique for the two users)
+      this.room = [this.message.senderId, this.message.receiverId].sort().join('_');
       this.fetchChatHistory(); // Fetch chat history
       this.initializeSocketConnection();
     });
@@ -54,13 +55,13 @@ export class ChatComponent implements OnInit, OnDestroy {
         auth: { token }, // Pass the JWT token for authentication
       });
 
-      // Join the chat room based on user IDs
+      // Join the chat room based on user IDs (only two users will join the room)
       this.socket.emit('join_room', this.room);
 
-      // Listen for incoming messages from other users
+      // Listen for incoming messages from other users in the same room
       this.socketSubscription = this.socket.on('chat_message', (msgData: any) => {
         console.log('Received message:', msgData);
-        
+
         // If the message is not sent by the current user, show it as received
         if (msgData.sender_id !== this.message.senderId) {
           this.messages.push({ ...msgData, isSender: false }); // Add the incoming message as received
@@ -102,14 +103,15 @@ export class ChatComponent implements OnInit, OnDestroy {
     // Emit the message to the backend
     this.apiService.sendMessage(this.message).subscribe({
       next: (response: any) => {
-        // Emit the message to the Socket.IO server for other users
+        // Emit the message to the Socket.IO server for the room
         this.socket.emit('chat_message', {
-          room: this.room,
+          room: this.room,  // Specify the room to broadcast to (only to the sender and receiver)
           receiver_id: this.message.receiverId,
           sender_id: this.message.senderId,
           message: this.message.message,
         });
         console.log('Message sent:', this.message.message);
+
         // Add the message to the local chat display (sender's side)
         this.messages.push(sentMessage);
 
@@ -125,6 +127,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       },
     });
   }
+
   // Scroll to the bottom of the chat container when a new message arrives
   scrollToBottom(): void {
     setTimeout(() => {
@@ -134,6 +137,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       }
     }, 0); // Timeout ensures that the DOM updates first
   }
+
   // Cleanup socket connection and subscription when the component is destroyed
   ngOnDestroy(): void {
     if (this.socketSubscription) {

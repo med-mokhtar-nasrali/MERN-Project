@@ -13,7 +13,7 @@
     dotenv.config();  // Load environment variables
 
     const app = express();
-    const PORT = process.env.PORT || 8000;  // Ensure default port if none in .env
+    const PORT = process.env.PORT;  // Ensure default port if none in .env
 
     const server = http.createServer(app);  // Create HTTP server
     const io = new SocketIOServer(server, {

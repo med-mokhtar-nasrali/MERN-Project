@@ -19,11 +19,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 export class CreateRecipeComponent {
   newRespi: NewRes = {}
   errorMessage: any = {}
-
   toppings = new FormControl('');
   toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   constructor(private apiService: ApiService, private router: Router) {}
-
   addrecipe(): void {
     this.apiService.createRecipe(this.newRespi).subscribe({
       next: (res) => this.router.navigate(['/recipes']),

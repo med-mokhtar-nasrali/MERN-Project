@@ -175,9 +175,3 @@ export class ApiService {
     // console.error('*',errorMessage)
   }
 }
-
-
-
-
-
-
