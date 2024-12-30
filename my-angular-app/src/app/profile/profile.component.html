@@ -1,4 +1,4 @@
-<app-navbar></app-navbar> 
+<app-navbar></app-navbar>
 <br> <br><br>
 <div id="div">
     <section class="profile-section">
@@ -6,7 +6,13 @@
             <div class="profile-picture"></div>
             <div class="profile-info">
                 <div class="username-section">
+<<<<<<< HEAD
                     <h2>jordan</h2>
+=======
+                    <div *ngIf="currentUser">
+                        <h2>{{currentUser.firstName}} {{currentUser.lastName}} </h2>
+                    </div>
+>>>>>>> 95a8dbe4b92d342810f3af0ba28f0b694523e2eb
                     <button class="button" style="cursor:zoom-in"
                         onclick="document.getElementById('modal011').style.display='block'">
                         <svg class="svg-icon" fill="none" height="20" viewBox="0 0 20 20" width="20"
@@ -27,7 +33,6 @@
                         </div>
                     </div>
                 </div>
-                <p> hi!!!welcome to my coke </p>
             </div>
         </div>
     </section>
@@ -44,7 +49,40 @@
 </section>
 <!-- Posts Section -->
 <section class="posts">
+<<<<<<< HEAD
     <div class="post">
         <a routerLink="/show">  <img src="./img/gallery/food/StockCake-Delectable Lasagna Dish_1734810262.jpg" style="cursor:zoom-in"></a>
     </div>
+=======
+
+    <div *ngIf="userRecipes.length > 0">
+        <h3>Your Recipes</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Recipe Name</th>
+                    <th>Description</th>
+                    <th>Duration (minutes)</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let recipe of userRecipes">
+                    <td>{{ recipe.recipeName }}</td>
+                    <td>{{ recipe.recipeDescription }}</td>
+                    <td>{{ recipe.recipeDuration }}</td>
+                    <td>
+                        <img [src]="recipe.recipeImg" alt="{{ recipe.recipeName }}" width="100">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="userRecipes.length === 0">
+        <p>No recipes found.</p>
+    </div>
+
+
+
+>>>>>>> 95a8dbe4b92d342810f3af0ba28f0b694523e2eb
 </section>

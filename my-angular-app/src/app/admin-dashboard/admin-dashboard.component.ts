@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-admin-dashboard',
-  imports: [CommonModule],
+  imports: [CommonModule, NavbarComponent],
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css']
 })
@@ -24,7 +25,6 @@ export class AdminDashboardComponent implements OnInit {
     if (this.currentUserRole === 'admin') {
       this.fetchUsers();
       this.fetchRecipes();
-      this.fetchUserCount();
     } else {
       console.error('Access denied. Admins only.');
       alert('Access denied. Admins only.');
@@ -71,13 +71,5 @@ export class AdminDashboardComponent implements OnInit {
     );
   }
 
-  fetchUserCount(): void {
-    this.apiService.countUsers().subscribe(
-      data => {
-        console.log('User count:', data.count);
-        this.userCount = data.count;
-      },
-      error => console.error('Error counting users', error)
-    );
-  }
+
 }

@@ -29,6 +29,7 @@ export const registerUser = async (req, res) => {
     }
 };
 
+
 // Login a user
 export const loginUser = async (req, res) => {
     try {
@@ -63,6 +64,22 @@ export const getAllUsers = async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch users', details: err.message });
     }
 };
+
+// Get a user by ID
+export const getUserById = async (req, res) => {
+    try {
+        const { id } = req.params; // Extract user ID from request parameters
+
+        // Fetch user by ID from the database
+        const user = await User.findById(id);
+        if (!user) return res.status(404).json({ error: 'User not found' });
+
+        res.status(200).json(user);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to fetch user', details: err.message });
+    }
+};
+
 
 // Get all users (Admins only)
 export const getAllUsersAdmin = async (req, res) => {
@@ -138,11 +155,21 @@ export const verifyToken = (req, res) => {
     }
 };
 
-// Logout a user (client-side action)
-export const logoutUser = (req, res) => {
-    // Client should delete token on their end (e.g., remove from localStorage or cookies)
-    res.status(200).json({ message: 'Logged out successfully' });
+// Logout a user
+export const logoutUser = async (req, res) => {
+    try {
+        const token = req.header('Authorization').replace('Bearer ', '');
+
+        // Optionally, add the token to a blacklist
+        await new Blacklist({ token }).save();
+
+        // Respond to the client
+        res.status(200).json({ message: 'Logged out successfully' });
+    } catch (err) {
+        res.status(500).json({ error: 'Logout failed', details: err.message });
+    }
 };
+
 
 // Function to delete a user (admin only)
 export const deleteUserAdmin = async (req, res) => {

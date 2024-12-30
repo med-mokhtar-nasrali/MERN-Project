@@ -26,7 +26,7 @@ export class ApiService {
       catchError(this.handleError)
     );
   }
-  
+
   sendMessage(data: any): Observable<any> {
     const headers = this.getAuthHeaders();
     return this.http.post(`${this.baseUrl}/messages/${data.senderId}/${data.receiverId}`, data, { headers }).pipe(
@@ -154,14 +154,24 @@ export class ApiService {
     );
   }
 
-  // Method to count all users
-  countUsers(): Observable<any> {
+
+  // Method to get a user by ID
+  getUserById(userId: string): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-    return this.http.get(`${this.baseUrl}/users/count`, { headers }).pipe(
+    return this.http.get(`${this.baseUrl}/users/${userId}`, { headers }).pipe(
       catchError(this.handleError)
     );
   }
+
+  getRecipesByUserId(userId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.get(`${this.baseUrl}/recipes/user/${userId}`, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 
   // Error handler
   private handleError(error: any): Observable<never> {
