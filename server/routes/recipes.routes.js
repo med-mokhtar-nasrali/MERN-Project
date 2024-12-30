@@ -6,6 +6,7 @@ import {
     updateOneRecipe,
     deleteOneRecipe,
     deleteRecipeAdmin,
+    getRecipesByUserId
 } from "../controllers/recipes.controller.js";
 import { addCommentToRecipe, getCommentsForRecipe } from "../controllers/comments.controller.js"
 import { addRatingToRecipe, getRatingsForRecipe } from "../controllers/rating.controller.js";
@@ -16,7 +17,7 @@ const router = Router();
 // Routes to handle creation and fetching of all recipes
 router.route("/recipes")
     .post(authenticateToken, create)
-    .get(getAllRecipes);
+    .get(authenticateToken, getAllRecipes);
 
 // Admin check middleware
 const checkAdmin = (req, res, next) => {
@@ -46,8 +47,12 @@ router.route("/recipes/:id/ratings")
     .post(authenticateToken, addRatingToRecipe)
     .get(getRatingsForRecipe);
 
+// Route to get recipes by user ID
+router.get('/recipes/user/:userId', authenticateToken, getRecipesByUserId);
+
 // Route to delete a recipe (admin only)
 router.delete('/recipes/:id/admin', authenticateToken, checkAdmin, deleteRecipeAdmin);
 
 
 export default router;
+

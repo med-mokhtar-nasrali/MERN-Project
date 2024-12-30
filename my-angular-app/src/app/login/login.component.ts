@@ -38,7 +38,7 @@ export class LoginComponent {
 
         // Redirect based on user role
         if (response.role === 'admin') {
-          this.router.navigate(['/admin']);
+          this.router.navigate(['/recipes']);
         } else {
           this.router.navigate(['/recipes']);
         }

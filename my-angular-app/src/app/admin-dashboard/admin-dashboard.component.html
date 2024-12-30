@@ -1,13 +1,10 @@
-<div>
-  <h3>Dashboard</h3>
-</div>
+<app-navbar></app-navbar>
 
-<hr>
+
 
 <div *ngIf="users.length > 0">
-  <h3>All Users</h3>
+  <h3>All Users: {{ users.length }}</h3>
   <table>
-    <h3>All Users: {{ userCount }}</h3>
     <table>
       <thead>
         <tr>
@@ -37,7 +34,7 @@
 <hr>
 
 <div *ngIf="recipes.length > 0">
-  <h3>All Recipes</h3>
+  <h3>All Recipes: {{ recipes.length }} </h3>
   <table>
     <thead>
       <tr>

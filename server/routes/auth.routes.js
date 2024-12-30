@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerUser, loginUser, updateUser, verifyToken, logoutUser, getAllUsers, getAllUsersAdmin, deleteUserAdmin, countAllUsersAdmin } from '../controllers/authController.js';
+import { registerUser, loginUser, updateUser, verifyToken, logoutUser, getAllUsers, getAllUsersAdmin, deleteUserAdmin, countAllUsersAdmin, getUserById } from '../controllers/authController.js';
 import authenticateToken from '../middlewares/authMiddleware.js'; // Assuming you have authentication middleware
 
 const router = express.Router();
@@ -19,6 +19,9 @@ router.get('/verify', authenticateToken, verifyToken);
 // Logout a user (client-side action)
 router.post('/logout', logoutUser);
 
+// Route to get a user by ID
+router.get('/users/:id', authenticateToken, getUserById);
+
 
 // Admin check middleware
 const checkAdmin = (req, res, next) => {
@@ -31,8 +34,6 @@ const checkAdmin = (req, res, next) => {
 router.delete('/users/:id', authenticateToken, checkAdmin, deleteUserAdmin);
 
 
-// Route to count all users (only accessible by admin)
-router.get('/users/count', authenticateToken, countAllUsersAdmin);
 
 
 
