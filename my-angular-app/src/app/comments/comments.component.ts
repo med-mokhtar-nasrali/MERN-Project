@@ -18,6 +18,7 @@ export class CommentsComponent {
   comments: any[] = [];
   newComment: string = ""
   ratings: any[] = [];
+  ratings1: any[] = [];
   ratingValue: number = 0;
 
 
@@ -33,16 +34,17 @@ export class CommentsComponent {
     }
   }
 
-  fetchComments(): void {
-    this.apiService.getCommentsByRecipeId(this.recipeId).subscribe(
-      {
-        next: (data) => { this.comments = data.comments; console.log(data.comments[0].commentedBy) },
-// tjib ratings kolla 
-//loop 3la comments 
-// koll comment[i] bech tzidou rating key ; value bech tjibha mel ratings 
-        error: (error) => console.error('Error fetching comments', error)
+  async fetchComments(): Promise<void> {
+    try {
+      const data = await this.apiService.getCommentsByRecipeId(this.recipeId).toPromise();
+      this.comments = data.comments; console.log(data.comments[0].commentedBy);
+      await this.fetchRatings(); console.log("ratingss", this.ratings);
+      for (let index = 0; index < this.comments.length; index++) {
+        const element = this.comments[index].rating = this.ratings[index].ratingValue;
+
       }
-    );
+    }
+    catch (error) { console.error('Error fetching comments', error); }
   }
 
   submitComment(): void {
@@ -69,11 +71,12 @@ export class CommentsComponent {
     );
   }
 
-  fetchRatings(): void {
-    this.apiService.getRatingsByRecipeId(this.recipeId).subscribe(
-      data => this.ratings = data.ratings,
-      error => console.error('Error fetching ratings', error)
-    );
+  async fetchRatings(): Promise<void> {
+    try {
+      const data = await this.apiService.getRatingsByRecipeId(this.recipeId).toPromise();
+      this.ratings = data.ratings;
+    }
+    catch (error) { console.error('Error fetching ratings', error); }
   }
 
   deleteRecipe(): void {

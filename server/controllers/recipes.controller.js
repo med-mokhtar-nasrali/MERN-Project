@@ -8,12 +8,13 @@ async function create(req, res) {
             recipeName,
             recipeDescription,
             recipeDuration,
-            recipeImg,
             recipeDirections,
             recipeCategory,
             recipeType,
             recipeIngredients
         } = req.body;
+
+        const recipeImg = req.file ? req.file.path : null;
 
         // Ensure the user ID is extracted from the token
         if (!req.user || !req.user.id) {
@@ -42,7 +43,10 @@ async function create(req, res) {
         });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: "An error occurred while creating the recipe." });
+        if (err.name === 'ValidationError') {
+            return res.status(400).json(err.errors );
+        }
+        res.status(500).json({ message: "An error occurred while creating the recipe.", error: err.message });
     }
 }
 

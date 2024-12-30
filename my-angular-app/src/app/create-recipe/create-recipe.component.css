@@ -1,7 +1,11 @@
+@import url("https://www.w3schools.com/w3css/4/w3.css");
+
 .font-robo {
 	font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
 }
-
+#modal01{ 
+	background-color: rgba(255, 255, 255, 0.8);
+}
 .row {
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -11,6 +15,22 @@
 	-webkit-flex-wrap: wrap;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
+}
+.card{   border: none;
+    background-color: rgba(255, 255, 255, 0.3); 
+    height: 500%;
+
+} 
+.div{ 
+    padding: 5px;
+}
+.filter{ 
+    background-color: rgb(240, 234, 234); 
+    width: 900px;  margin: 0px auto;  
+    padding: 0px auto; 
+    font-size: larger; 
+    border-radius: 5px; 
+    height: 50%;
 }
 
 .row-space {
@@ -496,12 +516,11 @@ input {
 	justify-content: space-evenly; 
 
   } 
-  select{
+select{
 	width: 150px; 
 	height: 30px; 
-	border-radius: 10px; 
-
-  } 
+	border-radius: 10px;  
+} 
   textarea{  border-radius: 5px;
 	border: solid 1px; 
 	padding: 10px;

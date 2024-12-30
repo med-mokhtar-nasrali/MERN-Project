@@ -29,7 +29,6 @@ const checkAdmin = (req, res, next) => {
 // Route to get all recipes (admin only)
 router.get('/recipes/admin', authenticateToken, checkAdmin, getAllRecipes);
 
-
 // Routes to handle specific recipes by ID
 router.route("/recipes/:id")
     .get(getOneRecipe)
@@ -48,6 +47,5 @@ router.route("/recipes/:id/ratings")
 
 // Route to delete a recipe (admin only)
 router.delete('/recipes/:id/admin', authenticateToken, checkAdmin, deleteRecipeAdmin);
-
 
 export default router;

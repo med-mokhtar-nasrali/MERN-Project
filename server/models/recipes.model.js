@@ -20,18 +20,15 @@ const RecipesSchema = new Schema(
             required: [true, "You must put how much time the recipe take"],
             min: [1, "You are not super sonic!"]
         },
-        
         recipeImg: {
             type: String,
             required: [true, "You must share the photo of the recipe"]
         },
-
         recipeDirections: {
             type: String,
             required: [true, "You must put the steps of the recipe"],
             minlength: [30, "Recipe directions must be at least 30 chars!"]
         },
-
         recipeCategory: {
             type: String,
             validate:{
@@ -50,7 +47,6 @@ const RecipesSchema = new Schema(
         
         recipeIngredients: {
             type: [String],
-            default:[],
             required:[true,"You must put your Ingredients"]
         },
         postedBy: { type: Schema.Types.ObjectId, ref: "User", required: true }, // Reference to User

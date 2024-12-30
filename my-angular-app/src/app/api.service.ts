@@ -85,7 +85,8 @@ export class ApiService {
 
   // Create a new recipe
   createRecipe(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/recipes`, data).pipe(
+    const headers = this.getAuthHeaders(); // Add auth headers if required
+    return this.http.post(`${this.baseUrl}/recipes`, data, { headers }).pipe(
       catchError(this.handleError)  // Handle errors gracefully
     );
   }

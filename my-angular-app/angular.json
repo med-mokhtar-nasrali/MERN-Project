@@ -26,21 +26,19 @@
                 "input": "public"
               }
             ],
-            "styles": [ 
+            "styles": [
+              "node_modules/primeicons/primeicons.css",
               "@angular/material/prebuilt-themes/azure-blue.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/animate.css/animate.min.css",
               "src/styles.css"
             ],
-            "scripts": [ 
-            
+            "scripts": [
               "src/js/vendor/jquery-1.12.4.min.js",
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/js/main.js"
-              
-              
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",

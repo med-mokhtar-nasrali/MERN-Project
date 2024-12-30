@@ -1,36 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { NewRes } from '../new-res';
-import { ApiService } from '../api.service';
-import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatSelectModule } from '@angular/material/select'; 
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { SelectComponent } from '../select/select.component';
-import { MultiSelectModule } from 'primeng/multiselect';
 
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MultiSelectModule } from 'primeng/multiselect';
 interface City {
   name: string,
   code: string
 }
-
 @Component({
-  selector: 'app-create-recipe',
+  selector: 'app-select',
   standalone: true,
-  imports: [CommonModule, FormsModule, MultiSelectModule],
-  templateUrl: './create-recipe.component.html',
-  styleUrl: './create-recipe.component.css'
+  imports: [FormsModule, MultiSelectModule],
+  templateUrl: './select.component.html',
+  styleUrl: './select.component.css'
 })
-export class CreateRecipeComponent implements OnInit {
+export class SelectComponent implements OnInit {
   cities!: City[];
+  
   selectedCities!: City[];
-  newRecipe: any = {};
-  successMessage: string = ''; // Message displayed on successful user creation
-  errorMessage: any = {}; // Display errors as string for easier handling in template
-
-  constructor(private apiService: ApiService, private router: Router) {}
-
-  async ngOnInit() {
+  
+  ngOnInit() {
+    console.log(this.cities);
     this.cities = [
       { name: "Salt", code: "SLT" },
       { name: "Pepper", code: "PPR" },
@@ -109,21 +98,6 @@ export class CreateRecipeComponent implements OnInit {
       { name: "Nuts (almonds, walnuts, cashews)", code: "NUT" },
       { name: "Dried fruits (raisins, cranberries, apricots)", code: "DF" }
     ];
-    console.log(this.cities);
+    
   }
-
-  async addRecipe() {
-    try {
-      console.log(this.newRecipe);  // Log the data being sent to the server
-      const response = await this.apiService.createRecipe(this.newRecipe).toPromise();
-      console.log(response);
-      this.successMessage = 'Recipe added successfully!';
-      this.errorMessage = ''; // Clear any previous errors
-      this.newRecipe = {}; // Reset form after successful submission
-      this.router.navigate(['/all-post']);
-    } catch (error) {
-      this.errorMessage = error // Handle backend error
-      console.log('Error adding recipe:', error);
-    }
   }
-}

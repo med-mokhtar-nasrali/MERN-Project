@@ -3,8 +3,8 @@
   <div id="messages">
     <div *ngFor="let msg of messages" class="message" 
       [ngClass]="{
-        'sender': message.senderId === msg.sender_id, 
-        'receiver': message.senderId !== msg.sender_id
+        'sender': message.senderId === msg.senderId, 
+        'receiver': message.senderId !== msg.senderId
       }">
       <p id="mesg">{{ msg.message }}</p>
     </div>
