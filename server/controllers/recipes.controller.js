@@ -183,6 +183,25 @@ export const deleteRecipeAdmin = async (req, res) => {
 };
 
 
+// Search recipes by name, type, and category
+export const searchRecipes = async (req, res) => {
+    try {
+        const { name, type, category } = req.query;
+        const query = {};
+
+        if (name) query.recipeName = { $regex: name, $options: 'i' };
+        if (type) query.recipeType = { $regex: type, $options: 'i' };
+        if (category) query.recipeCategory = { $regex: category, $options: 'i' };
+
+        const recipes = await Recipe.find(query);
+        res.status(200).json(recipes);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to search recipes', details: err.message });
+    }
+};
+
+
+
 export {
     create,
     getAllRecipes,

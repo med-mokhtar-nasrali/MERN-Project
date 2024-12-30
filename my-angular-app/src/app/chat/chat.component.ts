@@ -25,7 +25,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     private apiService: ApiService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Get sender ID from local storage
@@ -40,7 +40,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     // Get receiver ID from route parameters
     this.route.params.subscribe((params) => {
       this.message.receiverId = params['id'];
-      this.room = `159`; // Create a room name based on user IDs
+      this.room = [this.message.senderId, this.message.receiverId].sort().join('-');
       this.fetchChatHistory(); // Fetch chat history
       this.initializeSocketConnection();
     });
@@ -60,7 +60,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       // Listen for incoming messages from other users
       this.socketSubscription = this.socket.on('chat_message', (msgData: any) => {
         console.log('Received message:', msgData);
-        
+
         // If the message is not sent by the current user, show it as received
         if (msgData.sender_id !== this.message.senderId) {
           this.messages.push({ ...msgData, isSender: false }); // Add the incoming message as received

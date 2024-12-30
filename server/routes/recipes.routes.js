@@ -6,7 +6,8 @@ import {
     updateOneRecipe,
     deleteOneRecipe,
     deleteRecipeAdmin,
-    getRecipesByUserId
+    getRecipesByUserId,
+    searchRecipes
 } from "../controllers/recipes.controller.js";
 import { addCommentToRecipe, getCommentsForRecipe } from "../controllers/comments.controller.js"
 import { addRatingToRecipe, getRatingsForRecipe } from "../controllers/rating.controller.js";
@@ -52,6 +53,9 @@ router.get('/recipes/user/:userId', authenticateToken, getRecipesByUserId);
 
 // Route to delete a recipe (admin only)
 router.delete('/recipes/:id/admin', authenticateToken, checkAdmin, deleteRecipeAdmin);
+
+// Route to search recipes
+router.get('/recipes/search', authenticateToken, searchRecipes);
 
 
 export default router;

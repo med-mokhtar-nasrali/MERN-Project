@@ -172,6 +172,15 @@ export class ApiService {
   }
 
 
+  searchRecipes(params: { name?: string; type?: string; category?: string }): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.get(`${this.baseUrl}/recipes/search`, { headers, params }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+
   // Error handler
   private handleError(error: any): Observable<never> {
     console.error('An error occurred:', error);  // Log error to console

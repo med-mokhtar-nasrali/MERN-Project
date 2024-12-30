@@ -1,23 +1,29 @@
-<div class="body">
-  <div class="container">
-    <div *ngIf="recipes.length">
-      <div class="card" *ngFor="let recipes of recipes">
-        <img src="image-placeholder.jpg" alt="Classic Baguette">
-        <div class="card-content">
-          <p> <a [routerLink]="['/recipes', recipes._id]">{{ recipes.recipeName }}</a> </p>
-          <p>{{ recipes.recipeDescription }}</p>
-          <p>{{ recipes.recipeDuration }}</p>
-          <p>{{ recipes.recipeImg }}</p>
-          <p>{{ recipes.recipeDirections }}</p>
-          <p>{{ recipes.recipeCategory }}</p>
-          <p>{{ recipes.recipeType }}</p>
-          <p>{{ recipes.recipeIngredients }}</p>
-        </div>
-      </div>
-      <div *ngIf="!recipes.length">
-        <p>No recipes available.</p>
-      </div>
+<div>
+  <h2>All Recipes</h2>
+  <mat-form-field class="example-full-width">
+    <mat-label>Search</mat-label>
+    <input id="searchText" matInput #Search maxlength="256" placeholder="Ex. I need help with..."
+      [(ngModel)]="searchText" (ngModelChange)="onSearchChange()">
+  </mat-form-field>
 
-    </div>
+  <h3>Filtered Recipes</h3>
+  <div *ngIf="filteredRecipes.length > 0">
+    <mat-card *ngFor="let recipe of filteredRecipes" class="example-card" appearance="outlined">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{recipe.recipeName}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>{{ recipe.recipeType }}</p>
+        <p>{{recipe.recipeCategory }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button [routerLink]="['/recipes', recipe._id]">View Details</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div *ngIf="filteredRecipes.length === 0">
+    <p>No recipes found.</p>
   </div>
 </div>
