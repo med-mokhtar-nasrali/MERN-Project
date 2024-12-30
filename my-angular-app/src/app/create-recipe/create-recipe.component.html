@@ -1,4 +1,6 @@
-<div class="wrapper wrapper--w960">
+<app-navbar></app-navbar>
+<br><br><br>
+<div class="wrapper wrapper--w960 mt-5">
     <div class="card card-2">
         <div class="card-heading"></div>
         <div class="card-body">
@@ -12,7 +14,7 @@
                         <div *ngIf="errorMessage.recipeName" class="error">{{ errorMessage.recipeName.message }}</div>
 
                     </div>
-                
+
                     <div class="container">
                         <input type="text" placeholder="" name="recipeDuration" [(ngModel)]="newRespi.recipeDuration"
                             class="input">
@@ -55,15 +57,15 @@
 
                             </select>
 
-                        </div> 
+                        </div>
                         <div>
                             <p style="cursor:zoom-in" onclick="document.getElementById('modal01').style.display='block'"
                                 class="btn btn-dark">ingredients</p>
-    
+
                             <div id="modal01" class="w3-modal">
                                 <span class="w5-button w3-red w3-xxlarge w3-display-topright"
                                     onclick="document.getElementById('modal01').style.display='none'">&times;</span>
-    
+
                                 <div class="mt-5 mb-0"><app-select></app-select> </div>
                             </div>
                         </div>
