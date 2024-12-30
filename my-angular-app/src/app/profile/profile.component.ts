@@ -4,12 +4,19 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ApiService } from '../api.service';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+
 
 @Component({
   selector: 'app-profile',
-  imports: [EditeComponent, RouterModule, NavbarComponent, CommonModule],
+  imports: [EditeComponent, RouterModule, NavbarComponent, CommonModule, MatButtonModule, MatCardModule],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css', '../profile/profile.component.css']
+
+
+
 })
 export class ProfileComponent implements OnInit {
 
