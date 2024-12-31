@@ -19,14 +19,25 @@ export class ApiService {
     }
     return headers;
   }
-
+  uploadImage(sticker: File): Observable<any> {
+    console.log(sticker);
+    const data = new FormData();
+    data.append('sticker', sticker, sticker.name);
+    return this.http.post<any>(this.baseUrl+"/upload", data);
+  }
   getMessages(senderId: string, receiverId: string): Observable<any> {
     const headers = this.getAuthHeaders();
     return this.http.get<any>(`${this.baseUrl}/messages/${senderId}/${receiverId}`, { headers }).pipe(
       catchError(this.handleError)
     );
   }
-
+  // get conversation
+  getConversation(senderId: string): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<any>(`${this.baseUrl}/messages/${senderId}`, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
   sendMessage(data: any): Observable<any> {
     const headers = this.getAuthHeaders();
     return this.http.post(`${this.baseUrl}/messages/${data.senderId}/${data.receiverId}`, data, { headers }).pipe(
@@ -156,9 +167,7 @@ export class ApiService {
 
   // Method to get a user by ID
   getUserById(userId: string): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-    return this.http.get(`${this.baseUrl}/users/${userId}`, { headers }).pipe(
+    return this.http.get(`${this.baseUrl}/users/${userId}`).pipe(
       catchError(this.handleError)
     );
   }

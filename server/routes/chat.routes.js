@@ -3,10 +3,12 @@ import {
     getMessages,
     sendMessage,
     deleteMessage,
+    getConversations,
 } from '../controllers/chatController.js';
 
 const msgRouter = express.Router();
-
+//get converstions
+msgRouter.get('/messages/:userId', getConversations);
 // Get messages between two users
 msgRouter.get('/messages/:senderId/:receiverId', getMessages);
 

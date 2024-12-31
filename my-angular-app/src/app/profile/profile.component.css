@@ -1,5 +1,6 @@
 @import url("https://www.w3schools.com/w3css/4/w3.css");
-/* Réinitialisation générale */
+
+/* General reset */
 * {
     margin: 0;
     padding: 0;
@@ -12,30 +13,29 @@ body {
     color: #000000;
 }
 
-/* Section Profil */
+/* Profile Section */
 .profile-section {
     display: flex;
-    padding: 40px 10%; 
-    flex-direction: column;   
+    padding: 40px 10%;
+    flex-direction: column;
     gap: 10px;
     background-color: #ffffff;
-   
 }
 
-.div{ 
-    display: flex; 
+.div {
+    display: flex;
     justify-content: center;
-    
-    
 }
 
 .profile-picture {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 3px solid #e1306c; /* Cerceau autour de l'image */
+    border: 3px solid #e1306c;
     background-color: #ddd;
     margin-right: 30px;
+    background-image: url("../../../public/img/logo/666201.png");
+    background-size: cover;
 }
 
 .profile-info {
@@ -120,135 +120,51 @@ button:hover {
 }
 
 /* Posts Section */
-.posts {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 10px;
-    padding-left: 30%; 
-    padding-top: 5%;
-   
+.posts-section {
     background-color: #fff;
-}
-
-.post {
-    width: 100%;
-    height: 250px;
-    background-color: #e4e4e4;
-    position: relative;
-    overflow: hidden;
-    border-radius: 5px;
-}
-
-.post::before {
-    content: "";
-    display: block;
-    padding-bottom: 100%; /* Assure que les posts soient carrés */
-}
-
-.post img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Responsivité */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    header input {
-        width: 100%;
-    }
-
-    .profile-section {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-    }
-
-    .profile-picture {
-        margin-bottom: 15px;
-    }
-
-    .highlights {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .highlight {
-        width: 70px;
-        height: 70px;
-    }
-}
-
-@media (max-width: 480px) {
-    .posts {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-
-    button {
-        width: 100%;
-        text-align: center;
-    }
-}
- 
-#img{ 
-
-    height: 50%;
-    display: flex;    
-    margin-top:10%;
-    margin-left: 25%;
-    justify-content: space-around;
-   
-} 
-/* .df{ 
-    position: relative; 
-} */ 
-/**********************************************/
-/* From Uiverse.io by andrew-demchenk0 */ 
-/* From Uiverse.io by luigimiraglia */ 
-.button {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 6px 12px;
-    gap: 8px;
-    height: 36px;
-    width: 120px;
-    border: none;
-    background: black;
-    border-radius: 20px;
-    cursor: pointer;
-  }
-  
-  .lable {
-    line-height: 20px;
-    font-size: 17px;
+    padding: 20px;
+}
+
+.recipe-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+.recipe-card {
+    flex: 1 1 calc(33.333% - 50px);
+    max-width: calc(33.333% - 50px);
+    box-sizing: border-box;
+}
+
+.example-card {
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .recipe-card {
+        flex: 1 1 calc(50% - 50px);
+        max-width: calc(50% - 50px);
+    }
+}
+
+@media (max-width: 600px) {
+    .recipe-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+/* Styling for the h2 element */
+.styled-header {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
     color: white;
-    font-family: sans-serif;
-    letter-spacing: 1px;
-  }
-  
-  .button:hover {
-    background: grey;
-  }
-  
-  .button:hover .svg-icon {
-    animation: spin 2s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-  
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}

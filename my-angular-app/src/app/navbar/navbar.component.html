@@ -19,9 +19,9 @@
                                         <ul id="navigation">
                                             <li><a routerLink="/">Home</a></li>
                                             <li><a [routerLink]="['/recipes']">ALL post</a></li>
+                                            <li><a [routerLink]="['/create']">Creat post</a></li>
                                             <li *ngIf="currentUserRole === 'admin'"><a routerLink="/admin">Admin
                                                     Dashboard</a></li>
-                                            <!-- <li><a [routerLink]="['/create', user._id]">Creat post</a></li> -->
                                             <li></li>
                                         </ul>
                                     </nav>

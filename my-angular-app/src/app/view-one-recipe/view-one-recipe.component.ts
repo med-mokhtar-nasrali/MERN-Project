@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ApiService } from '../api.service';
 import { CommonModule } from '@angular/common';
 import { CommentsComponent } from '../comments/comments.component';
@@ -7,7 +7,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-view-one-recipe',
-  imports: [CommonModule, CommentsComponent,NavbarComponent],
+  imports: [CommonModule, CommentsComponent,NavbarComponent,RouterModule],
   templateUrl: './view-one-recipe.component.html',
   styleUrl: './view-one-recipe.component.css'
 })

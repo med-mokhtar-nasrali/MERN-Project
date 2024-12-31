@@ -36,10 +36,12 @@
               <div><label for="">recipeIngredients</label>
                 <p>{{ recipe.recipeIngredients }}</p>
               </div>
-             
+            
             </div> 
-           
+          
           </div>
+          
+          <a class="btn btn-info" [routerLink]="['/chat', recipe.postedBy._id]">chat</a>
           <app-comments></app-comments>
           <div *ngIf="!recipe">
             <p>Loading...</p>
