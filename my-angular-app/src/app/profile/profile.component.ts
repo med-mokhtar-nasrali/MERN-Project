@@ -11,7 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-profile',
-  imports: [EditeComponent, RouterModule, NavbarComponent, CommonModule, MatButtonModule, MatCardModule],
+  imports: [RouterModule, NavbarComponent, CommonModule, MatButtonModule, MatCardModule],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css', '../profile/profile.component.css']
 
@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
                 next: (data) => {
                   console.log('Fetched user:', data);
                   this.conversations.push(data);
-                  console.log('Conversations:', this.conversations);        
+                  console.log('Conversations:', this.conversations);
                 },
                 error: (error) => {
                   console.error('Error fetching user:', error);

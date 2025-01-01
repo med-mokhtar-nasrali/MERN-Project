@@ -12,10 +12,9 @@
     <div *ngIf="filteredRecipes.length === 1" class="single-recipe-card">
       <mat-card class="example-card" appearance="outlined">
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>{{filteredRecipes[0].recipeName}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <img mat-card-image src="http://localhost:8000/uploads/{{filteredRecipes[0].recipeIMG}}" alt="">
         <mat-card-content>
           <p><strong>Recipe Type:</strong> {{ filteredRecipes[0].recipeType }}</p>
           <p><strong>Recipe Category:</strong> {{filteredRecipes[0].recipeCategory }}</p>
@@ -30,11 +29,9 @@
       <div class="recipe-card" *ngFor="let recipe of filteredRecipes">
         <mat-card class="example-card" appearance="outlined">
           <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{recipe.recipeName}}</mat-card-title>
           </mat-card-header>
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-            alt="Photo of a Shiba Inu">
+          <img mat-card-image src="http://localhost:8000/uploads/{{recipe.recipeImg}}" alt="">
           <mat-card-content>
             <p><strong>Type:</strong> {{ recipe.recipeType }}</p>
             <p><strong>Category:</strong> {{recipe.recipeCategory }}</p>

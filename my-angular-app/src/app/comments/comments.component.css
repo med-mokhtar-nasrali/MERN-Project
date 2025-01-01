@@ -1,272 +1,140 @@
-li{
-    background-color: rgba(126, 124, 124, 0.2);  
-    padding:2% ;
-    text-decoration: none; 
-    border-radius: 10px; 
-    margin: 5%; 
-    list-style: none;
-    text-decoration: none; 
-    
-}   
-.date{
-   display: flex; 
-   gap: 5%;
-}
-ul{ 
-    text-decoration: none;
-}
-/* From Uiverse.io by vinodjangid07 */ 
-.bookmarkBtn {
-    width: 155px;
-    height: 40px;
-    border-radius: 40px;
-    border: none;
-    background-color: rgb(255, 255, 255);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition-duration: .3s;
-    overflow: hidden;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.062);
-  } 
-
-  
-  .IconContainer {
-    width: 30px;
-    height: 30px;
-    background-color: rgb(12, 12, 12);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    z-index: 2;
-    transition-duration: .3s;
-  }
-  
-  .icon {
-    border-radius: 1px;
-  }
-  
-  .text {
-    height: 100%;
-    width: 90px;
-    display: flex; 
-    padding-top: 15px;
-    align-items: center;
-    color: rgb(26, 26, 26);
-    z-index: 1;
-    transition-duration: .3s;
-    font-size: 1em;
-    font-weight: 600;
-
-  }
-  
-  .bookmarkBtn:hover .IconContainer {
-    width: 120px;
-    border-radius: 40px;
-    transition-duration: .3s;
-  }
-  
-  .bookmarkBtn:hover .text {
-    transform: translate(10px);
-    width: 0;
-    font-size: 0;
-    transition-duration: .3s;
-  }
-  
-  .bookmarkBtn:active {
-    transform: scale(0.95);
-    transition-duration: .3s;
-  } 
-.comment{  
-    
-    display: flex; 
-    gap: 5px;  
-    width: 50%; 
-    align-items: center;
-    
-}   
-input{
-    width: 100%; height: 50%;
-}
-.comm{  padding-top: 3%;
-    display: flex; 
-    justify-content: space-around; 
-    align-items: center;
-
-
+/* Comments Section */
+.comments-section {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: 'Roboto', sans-serif;
 }
 
-/* From Uiverse.io by cohencoo */ 
+/* Add Comment Form */
+.add-comment {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.add-comment .message {
+  color: #d9534f;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
 .input {
-    border-radius: 10px;
-    outline: 2px solid #161614;
-    border: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #e2e2e2;
-    outline-offset: 3px;
-    padding: 10px 1rem;
-    transition: 0.25s;
-  }
-  
-  .input:focus {
-    outline-offset: 5px;
-    background-color: #fff
-  } 
-      h3{  
-        padding-top: 5%;
-        margin: 0px auto; 
-        padding: 0px auto
-        ; text-align: center;
-      }
-  strong{ 
-    color: #eb9e6b; 
-    font-size: x-large;
-  }  
-  p{ 
-    font-family: cursive; 
-    font-size: large;
-  }
-  #co{ 
-    font-size: larger; 
-    font-family: cursive;
-  }
-  /* From Uiverse.io by vinodjangid07 */ 
-.button {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: rgb(20, 20, 20);
-  border: none;
-  font-weight: 600;
-  display: flex;
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.rating-range {
+  flex-basis: 100px;
+}
+
+.btn-submit {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
-  cursor: pointer;
-  transition-duration: .3s;
-  overflow: hidden;
-  position: relative;
-}
-
-.svgIcon {
-  width: 12px;
-  transition-duration: .3s;
-}
-
-.svgIcon path {
-  fill: white;
-}
-
-.button:hover {
-  width: 140px;
-  border-radius: 50px;
-  transition-duration: .3s;
-  background-color: rgb(255, 69, 69);
-  align-items: center;
-}
-
-.button:hover .svgIcon {
-  width: 50px;
-  transition-duration: .3s;
-  transform: translateY(60%);
-}
-
-.button::before {
-  position: absolute;
-  top: -20px;
-  content: "Delete";
-  color: white;
-  transition-duration: .3s;
-  font-size: 2px;
-}
-
-.button:hover::before {
-  font-size: 13px;
-  opacity: 1;
-  transform: translateY(30px);
-  transition-duration: .3s;
-}
-/* From Uiverse.io by Z4drus */ 
-/* From Uiverse.io by Z4drus */ 
-.button-container {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-}
-
-.button-3d {
-  -webkit-appearance: none;
-  appearance: none;
-  position: relative;
-  border-width: 0;
-  padding: 0 7px;
-  min-width: 4em;
-  min-height: 3em;
-  box-sizing: border-box;
-  background: transparent;
-  font: inherit;
-  cursor: pointer;
-  margin: 10px;
-  border-radius: 20px;
-}
-
-.button-top {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-  padding: 8px 16px;
-  transform: translateY(0);
+  gap: 0.5rem;
+  background-color: #007bff;
   color: #fff;
-  background-image: linear-gradient(145deg, #111013, #121213);
-  text-shadow: 0 -1px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  transition: transform 0.3s, border-radius 0.3s, background 10s;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
-.button-3d:active .button-top {
-  border-radius: 10px 10px 8px 8px / 8px;
-  transform: translateY(2px);
-  background-image: linear-gradient(145deg, #060707, #0a0a0a);
+.btn-submit:hover {
+  background-color: #0056b3;
 }
 
-.button-bottom {
-  position: absolute;
-  z-index: 1;
-  bottom: 4px;
-  left: 4px;
-  border-radius: 20px;
-  padding-top: 6px;
-  width: calc(100% - 9px);
-  height: calc(100% - 9px);
-  background-image: linear-gradient(145deg, #121213, #0a0a0a);
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
-  transition: border-radius 0.2s, padding-top 0.2s;
+.btn-submit:active {
+  transform: scale(0.98);
 }
 
-.button-base {
-  position: absolute;
-  z-index: 0;
-  top: 4px;
-  left: 0;
-  border-radius: 20px;
-  width: 100%;
-  height: calc(100% - 5px);
-  background-color: rgba(0, 0, 0, 0.15);
-  box-shadow: 0 1px 1px 0 rgba(255, 255, 255, 0.75),
-    inset 0 2px 2px rgba(0, 0, 0, 0.25);
-  transition: border-radius 0.2s, padding-top 0.2s;
+.btn-submit:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
-.button-3d:active .button-bottom {
-  border-radius: 10px 10px 7px 8px / 8px;
-  padding-top: 0;
+/* Comments List */
+.comment-list {
+  list-style: none;
+  padding: 0;
 }
 
-.button-3d:active .button-base {
-  border-radius: 10px 10px 8px 8px / 8px;
+.comment-card {
+  background: #f9f9f9;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.comment-header strong {
+  font-weight: 600;
+  color: #333;
+}
+
+.comment-header .rating {
+  font-size: 1rem;
+  color: #f39c12;
+}
+
+.comment-message {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.comment-date {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+/* No Comments */
+.no-comments {
+  text-align: center;
+  color: #888;
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .input-wrapper {
+    flex-direction: column;
+  }
+
+  .rating-range {
+    width: 100%;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+
+  .comment-card {
+    padding: 1rem 0.75rem;
+  }
 }

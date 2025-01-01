@@ -68,3 +68,97 @@
     margin-bottom: 20px;
     /* Space below the header */
 }
+
+.recipe-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.recipe-card {
+    flex: 1 1 calc(33.333% - 16px);
+    /* 3 recipes per line */
+    max-width: calc(33.333% - 16px);
+    /* 3 recipes per line */
+    box-sizing: border-box;
+    height: 450px;
+    /* Adjust the height as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Ensure content is spaced out evenly */
+}
+
+@media (max-width: 900px) {
+    .recipe-card {
+        flex: 1 1 calc(50% - 16px);
+        /* 2 recipes per line on smaller screens */
+        max-width: calc(50% - 16px);
+    }
+}
+
+@media (max-width: 600px) {
+    .recipe-card {
+        flex: 1 1 100%;
+        /* 1 recipe per line on very small screens */
+        max-width: 100%;
+    }
+}
+
+.example-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Ensure content is spaced out evenly */
+    max-width: 450px;
+    /* Adjust the max width */
+}
+
+.example-card img {
+    max-height: 200px;
+    /* Set the max height for the image */
+    object-fit: cover;
+    /* Ensures the image covers the designated area */
+}
+
+.mat-card-actions {
+    margin-top: auto;
+    /* Pushes the actions to the bottom of the card */
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px auto;
+    max-width: 1200px;
+    /* Adjust as needed */
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.styled-header {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    /* Gradient background */
+    color: white;
+    /* Text color */
+    padding: 10px 20px;
+    /* Padding for spacing */
+    border-radius: 8px;
+    /* Rounded corners */
+    text-align: center;
+    /* Center the text */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    margin-bottom: 20px;
+    /* Space below the header */
+}

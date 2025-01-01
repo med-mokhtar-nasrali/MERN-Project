@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from "../navbar/navbar.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-admin-dashboard',
-  imports: [CommonModule, NavbarComponent],
+  imports: [CommonModule, NavbarComponent, RouterLink],
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css']
 })
