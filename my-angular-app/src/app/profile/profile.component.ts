@@ -22,7 +22,9 @@ export class ProfileComponent implements OnInit {
 
   currentUser: any = null; // Add a property for the current user
   userRecipes: any[] = []; // Add a property for the user's recipes
-
+  messages: any[] = []; // Add a property for the user's messages
+  conversationsId: string[] = [];
+  conversations: any[] = [];
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
@@ -30,7 +32,49 @@ export class ProfileComponent implements OnInit {
     if (userId) {
       this.fetchCurrentUser(userId);
       this.fetchUserRecipes(userId);
+      //get converstion
+      console.log(userId);
+      this.apiService.getConversation(userId).subscribe({
+        next: (data) => {
+          this.messages = data;
+          console.log('Fetched conversation:', data);
+          this.conversationsId = this.getConversations(data);
+          console.log('Conversations:', this.conversationsId);
+          this.conversationsId.forEach((id) => {
+            if (id !== userId) {
+              this.apiService.getUserById(id).subscribe({
+                next: (data) => {
+                  console.log('Fetched user:', data);
+                  this.conversations.push(data);
+                  console.log('Conversations:', this.conversations);        
+                },
+                error: (error) => {
+                  console.error('Error fetching user:', error);
+                }
+              });
+            }
+          });
+        },
+        error: (error) => {
+          console.error('Error fetching conversation:', error);
+        }
+      });
     }
+  }
+
+  getConversations(data: any[]): string[] {
+    let result: string[] = [];
+    data.forEach((message) => {
+      if (!result.includes(message.sender_id._id)) {
+        result.push(message.sender_id._id);
+      }
+      if (!result.includes(message.receiver_id._id)) {
+        result.push(message.receiver_id._id);
+      }
+    });
+
+
+    return result;
   }
 
   fetchCurrentUser(userId: string): void {

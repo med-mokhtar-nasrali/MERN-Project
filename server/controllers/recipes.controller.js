@@ -19,7 +19,7 @@ async function create(req, res) {
         if (!req.user || !req.user.id) {
             return res.status(403).json({ message: "Unauthorized action." });
         }
-
+        
         // Create the recipe
         const newRecipe = new Recipes({
             recipeName,
@@ -32,7 +32,7 @@ async function create(req, res) {
             recipeIngredients,
             postedBy: req.user.id // Associate with logged-in user
         });
-
+        console.log('New recipe:', newRecipe);
         // Save the recipe
         const savedRecipe = await newRecipe.save();
 
@@ -42,7 +42,10 @@ async function create(req, res) {
         });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: "An error occurred while creating the recipe." });
+        if (err.name === 'ValidationError') {
+            return res.status(400).json(err.errors );
+        }
+        res.status(500).json({ message: "An error occurred while creating the recipe.", error: err.message });
     }
 }
 

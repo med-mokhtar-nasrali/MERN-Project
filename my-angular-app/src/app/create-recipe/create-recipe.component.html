@@ -56,6 +56,12 @@
                                 <option value="Snacks">Snacks</option>
 
                             </select>
+<<<<<<< HEAD
+                            <div *ngIf="errorMessage.recipeType" class="error">{{ errorMessage.recipeType.message }}</div>
+                        <div class="div">
+                            <div class="card flex justify-center">
+                                <p-multiselect [options]="ingredients" [(ngModel)]="newRecipe.newRecipe" placeholder="Select Ingredients" optionLabel="name" name="recipeIngredients" display="chip" styleClass="w-full md:w-80" />
+=======
 
                         </div>
                         <div>
@@ -67,6 +73,7 @@
                                     onclick="document.getElementById('modal01').style.display='none'">&times;</span>
 
                                 <div class="mt-5 mb-0"><app-select></app-select> </div>
+>>>>>>> d7477acc43c405238add7256bbb6b190d9edccb1
                             </div>
                         </div>
                     </div>

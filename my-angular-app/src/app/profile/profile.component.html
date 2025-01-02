@@ -16,13 +16,11 @@
 </div>
 <!-- Highlights Section -->
 <section class="highlights">
-    <div class="highlight"> pizza</div>
-    <div class="highlight">ham</div>
-    <div class="highlight">roast chicken</div>
-    <div class="highlight">steak</div>
-    <div class="highlight">sour cream</div>
-    <div class="highlight">fish</div>
-    <div class="highlight">seafood</div>
+    <div *ngFor="let user of conversations" class="highlight">
+        <a [routerLink]="['/chat', user._id]">
+        {{user.firstName}} {{user.lastName}}
+        </a>
+    </div>      
 </section>
 <!-- Posts Section -->
 <section class="posts-section">

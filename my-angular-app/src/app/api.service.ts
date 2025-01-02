@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  private readonly baseUrl = 'http://localhost:8000/api';  // Base URL for API
+  private readonly baseUrl = 'http://localhost:8000/api';  // Update this URL if the backend server is running on a different port
 
   constructor(private http: HttpClient) { }
 

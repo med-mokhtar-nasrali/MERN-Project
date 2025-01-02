@@ -32,7 +32,21 @@ export const sendMessage = async (req, res) => {
     res.status(500).json({ message: 'Failed to send message', error });
   }
 };
-
+// get converstions
+export const getConversations = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const conversations = await Message.find({
+      $or: [{ sender_id: userId }, { receiver_id: userId }],
+    })
+      .sort({ createdAt: -1 })
+      .populate('sender_id', 'username')
+      .populate('receiver_id', 'username');
+    res.status(200).json(conversations);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to fetch conversations', error });
+  }
+};
 // Delete a message by ID (optional)
 export const deleteMessage = async (req, res) => {
   const { messageId } = req.params;

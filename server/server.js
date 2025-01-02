@@ -9,7 +9,7 @@
     import jwt from 'jsonwebtoken';  // Import JWT for token verification
     import msgRouter from './routes/chat.routes.js';
     import Message from './models/message.model.js';  // Import the Message model
-
+    import multer from 'multer';
     dotenv.config();  // Load environment variables
 
     const app = express();
@@ -93,6 +93,29 @@
         console.log('User disconnected');
     });
     });
+    app.use('/uploads', express.static('public/uploads'));
+    console.log(`you are On server side port: ${PORT}`);
+
+    const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname); 
+    }
+});
+
+    const upload = multer({ storage: storage });
+
+    app.post('/api/upload', upload.single('sticker'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).send('No file uploaded.');
+    }
+
+    console.log(`File uploaded: ${req.file.filename}`);
+    const filePath = req.file.path.replace('public/', '');
+    res.status(200).send({ filePath });
+});
     // Start the server
     server.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
