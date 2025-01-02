@@ -1,8 +1,9 @@
-<div id="chat">
+<app-navbar></app-navbar>
+
+<div id="chat" style="margin-top: 100px;">
   <h2>Chat with </h2> <!-- Display the contact's name -->
   <div id="messages">
-    <div *ngFor="let msg of messages" class="message" 
-      [ngClass]="{
+    <div *ngFor="let msg of messages" class="message" [ngClass]="{
         'sender': message.senderId === msg.sender_id, 
         'receiver': message.senderId !== msg.sender_id
       }">

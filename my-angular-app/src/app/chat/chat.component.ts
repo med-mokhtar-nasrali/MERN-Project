@@ -5,10 +5,11 @@ import { io } from 'socket.io-client';  // Import the Socket.IO client
 import { Subscription } from 'rxjs';  // Import Subscription to manage the observable
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-chat',
-  imports: [RouterModule, FormsModule, CommonModule],
+  imports: [RouterModule, FormsModule, CommonModule, NavbarComponent],
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css'],
 })

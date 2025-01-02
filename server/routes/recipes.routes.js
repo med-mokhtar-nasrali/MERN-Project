@@ -1,5 +1,4 @@
 import { Router } from "express";
-// import multer from "multer";
 import {
     create,
     getAllRecipes,
@@ -15,7 +14,6 @@ import { addRatingToRecipe, getRatingsForRecipe } from "../controllers/rating.co
 import authenticateToken from "../middlewares/authMiddleware.js";
 
 const router = Router();
-// const upload = multer({ dest: 'uploads/' });
 
 // Routes to handle creation and fetching of all recipes
 router.route("/recipes")

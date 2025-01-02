@@ -1,53 +1,61 @@
-import { Component } from '@angular/core';
-import { NewRes } from '../new-res';
-import { ApiService } from '../api.service';
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service'; // Make sure ApiService is properly configured for API calls.
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-<<<<<<< HEAD
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { NavbarComponent } from '../navbar/navbar.component';
 
-interface Ingredient {
-  name: string,
-  code: string
+interface City {
+  name: string;
+  code: string;
 }
-=======
-import { MatSelectModule } from '@angular/material/select';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { SelectComponent } from '../select/select.component';
-import { NavbarComponent } from "../navbar/navbar.component";
 
-
-
->>>>>>> d7477acc43c405238add7256bbb6b190d9edccb1
+interface NewRecipe {
+  recipeName: string;
+  recipeDuration: number;
+  recipeDirections: string;
+  recipeDescription: string;
+  recipeCategory: string;
+  recipeType: string;
+  recipeImg: string;
+  recipeIngredients: string[];
+}
 
 @Component({
   selector: 'app-create-recipe',
-  imports: [CommonModule, FormsModule, SelectComponent, NavbarComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MultiSelectModule,
+    NavbarComponent,
+  ],
   templateUrl: './create-recipe.component.html',
-  styleUrl: './create-recipe.component.css'
+  styleUrls: ['./create-recipe.component.css'], // Fixed typo in `styleUrl`.
 })
-<<<<<<< HEAD
 export class CreateRecipeComponent implements OnInit {
-  ingredients!: Ingredient[];
-  newRecipe: any = {
+  Ingredients: City[] = [];
+  ingredients: City[] = [];
+  newRespi: NewRecipe = {
     recipeName: '',
     recipeDuration: 0,
-    recipeDescription: '',
     recipeDirections: '',
+    recipeDescription: '',
     recipeCategory: '',
     recipeType: '',
+    recipeImg: '',
     recipeIngredients: [],
-    recipeImg: null,
   };
+  errorMessage: any = {};
+  image: File = new File([], '');
+  postedBy = localStorage.getItem('user_id');
 
-  successMessage: string = ''; // Message displayed on successful user creation
-  errorMessage: any = {}; // Display errors as string for easier handling in template
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService, private router: Router) { }
+  ngOnInit() {
 
-  async ngOnInit() {
-    this.ingredients = [
+    this.Ingredients = [
       { name: "Salt", code: "SLT" },
       { name: "Pepper", code: "PPR" },
       { name: "Olive oil", code: "OO" },
@@ -126,44 +134,38 @@ export class CreateRecipeComponent implements OnInit {
       { name: "Dried fruits (raisins, cranberries, apricots)", code: "DF" }
     ];
   }
-  
-  addRecipe(): void {
-    const formData = new FormData();
-    formData.append('recipeName', this.newRecipe.recipeName);
-    formData.append('recipeDescription', this.newRecipe.recipeDescription);
-    formData.append('recipeDuration', this.newRecipe.recipeDuration);
-    formData.append('recipeDirections', this.newRecipe.recipeDirections);
-    formData.append('recipeCategory', this.newRecipe.recipeCategory);
-    formData.append('recipeType', this.newRecipe.recipeType);
-    formData.append('recipeIngredients', JSON.stringify(this.newRecipe.recipeIngredients.map((ingredient: Ingredient) => ingredient.name)));
-    if (this.newRecipe.recipeImg) {
-      formData.append('recipeImg', this.newRecipe.recipeImg);
-    }
+  onFileSelected(event: any): void {
+    this.image = event.target.files[0];
+  }
 
-    this.apiService.createRecipe(formData).subscribe({
+
+  addrecipe() {
+    console.log(this.ingredients);
+    // Include selected recipeIngredients
+    this.newRespi.recipeIngredients = this.ingredients.map((ingredient) => ingredient.name);
+    this.newRespi.recipeImg = this.image.name;
+    console.log(this.newRespi); // Log the data being sent to the server
+    this.apiService.createRecipe(this.newRespi).subscribe({
       next: (response) => {
-        this.successMessage = 'Recipe added successfully!';
-        this.router.navigate(['/recipes']);
+        if (this.image) {
+          this.apiService.uploadImage(this.image).subscribe({
+            next: (response) => {
+              console.log('Image uploaded successfully:', response);
+            },
+            error: (err) => {
+              console.error('Error uploading image:', err);
+            }
+          });
+        }
+        console.log('Recipe added successfully:', response);
+        this.router.navigate(['/recipes']); // Redirect to recipes list after success.
       },
-      error: (error) => {
-        console.log(error);
-        this.errorMessage = error.error.errors || { general: { message: 'An error occurred while adding the recipe.' } };
+      error: (err) => {
+        this.errorMessage = err; // Display error message on the template.
+        console.error('Error adding recipe:', this.errorMessage);
       }
     });
-  }
-=======
-export class CreateRecipeComponent {
-  newRespi: NewRes = {}
-  errorMessage: any = {}
-  constructor(private apiService: ApiService, private router: Router) { }
 
-  addrecipe(): void {
-    this.apiService.createRecipe(this.newRespi).subscribe({
-      next: (res) => this.router.navigate(['/recipes']),
-      error: (err) => console.log(err)
-    })
   }
 
-
->>>>>>> d7477acc43c405238add7256bbb6b190d9edccb1
 }

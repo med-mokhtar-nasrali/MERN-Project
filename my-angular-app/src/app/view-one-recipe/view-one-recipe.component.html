@@ -1,59 +1,41 @@
 <app-navbar></app-navbar>
 
+<div class="recipe-page">
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <img src="http://localhost:8000/uploads/{{recipe.recipeImg}}" alt="{{recipe.recipeName}}" />
+      <div class="overlay">
+        <h1>{{ recipe.recipeName }}</h1>
+        <p>{{ recipe.recipeCategory }} | {{ recipe.recipeType }}</p>
+      </div>
+    </div>
 
-<div class="page-wrapper p-t-100 p-b-100 font-robo" id="bg">
-  <div class="wrapper wrapper--w960">
-    <div class="card card-2">
-   
-      <div >
-        <div *ngIf="recipe" >
-          <div class="page-wrapper " id="div">
-            <div class="imgg">
-              <img src="../img/gallery/food/StockCake-Christmas_Baking_Time_1734987051.jpg" alt="">
-            
-            </div>
-            <div class="donne">  <p>{{ recipe.recipeImg }}</p>
-              <div><label for="">recipeName:</label>
-                <p>{{ recipe.recipeName }}</p>
-              </div>
-              <div><label for="">recipeDescription:</label>
-                <p>{{ recipe.recipeDescription }}</p>
-              </div>
-              <div><label for="">recipeDuration:</label>
-                <p>{{ recipe.recipeDuration }}</p>
-              </div>
-              <div><label for="">Recipe Directions:</label>
+    <div class="recipe-content">
+      <h2>Recipe Details</h2>
+      <p class="description">{{ recipe.recipeDescription }}</p>
 
-                <p>{{ recipe.recipeDirections }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam obcaecati asperiores, quisquam quaerat, molestiae tenetur deleniti commodi maxime ducimus iure sunt eaque. Laboriosam dolorum et delectus pariatur consectetur. Neque harum ducimus tempora, perferendis tenetur qui a deleniti. Repudiandae tempore explicabo, iure nobis aut error id beatae culpa, dolorem voluptatibus quas.
-                </p>
-              </div>
-              <div><label for="">recipeCategory:</label>
-                <p>{{ recipe.recipeCategory }}</p>
-              </div>
-              <div><label for="">recipeType:</label>
-                <p>{{ recipe.recipeType }}</p>
-              </div>
-              <div><label for="">recipeIngredients</label>
-                <p>{{ recipe.recipeIngredients }}</p>
-              </div>
-            
-            </div> 
-          
-          </div>
-          
-          <a class="btn btn-info" [routerLink]="['/chat', recipe.postedBy._id]">chat</a>
-          <app-comments></app-comments>
-          <div *ngIf="!recipe">
-            <p>Loading...</p>
-          </div>
+      <div class="info-grid">
+        <div>
+          <h3>Duration</h3>
+          <p>{{ recipe.recipeDuration }}</p>
         </div>
-
-
-
-
-
+        <div>
+          <h3>Ingredients</h3>
+          <p>{{ recipe.recipeIngredients }}</p>
+        </div>
+        <div class="directions">
+          <h3>Directions</h3>
+          <p>{{ recipe.recipeDirections }}</p>
+        </div>
       </div>
 
+      <a class="btn chat-btn" [routerLink]="['/chat', recipe.postedBy._id]">Chat with Poster</a>
     </div>
+
+    <app-comments></app-comments>
   </div>
+
+  <div *ngIf="!recipe" class="loading">
+    <p>Loading...</p>
   </div>
+</div>

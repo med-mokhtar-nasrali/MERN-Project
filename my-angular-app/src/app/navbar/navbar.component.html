@@ -1,4 +1,4 @@
-<div>
+<div style="margin-bottom: 10px;">
     <header>
         <!--? Header Start -->
         <div class="header-area header-transparent">
@@ -17,13 +17,13 @@
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a routerLink="/">Home</a></li>
-                                            <li><a [routerLink]="['/recipes']">ALL post</a></li>
-                                            <li><a [routerLink]="['/create']">Creat post</a></li>
-                                            <li *ngIf="currentUserRole === 'admin'"><a routerLink="/admin">Admin
-                                                    Dashboard</a></li>
-                                            <li></li>
+                                            <li><a class="button" routerLink="/">Home</a></li>
+                                            <li><a class="button" [routerLink]="['/recipes']">All Recipes</a></li>
+                                            <li><a class="button" [routerLink]="['/create']">Create Post</a></li>
+                                            <li *ngIf="currentUserRole === 'admin'"><a class="button"
+                                                    routerLink="/admin">Admin Dashboard</a></li>
                                         </ul>
+
                                     </nav>
                                 </div>
                                 <div class="d-lg-block ">

@@ -3,9 +3,11 @@
 .font-robo {
 	font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
 }
-#modal01{ 
+
+#modal01 {
 	background-color: rgba(255, 255, 255, 0.8);
 }
+
 .row {
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -78,8 +80,8 @@ legend {
 	padding: 0;
 }
 
-li > ol,
-li > ul {
+li>ol,
+li>ul {
 	margin-bottom: 0;
 }
 
@@ -160,7 +162,7 @@ h6 {
 }
 
 .p-t-30 {
-	padding-top: 30px; 
+	padding-top: 30px;
 	text-align: center;
 }
 
@@ -192,8 +194,8 @@ h6 {
 	-moz-transition: all 0.4s ease;
 	transition: all 0.4s ease;
 	font-size: 14px;
-	font-weight: 700; 
-	
+	font-weight: 700;
+
 }
 
 
@@ -258,6 +260,7 @@ input {
 	font-size: 14px;
 	font-family: inherit;
 }
+
 /* 
 .input-group {
 	position: relative;
@@ -328,10 +331,7 @@ input {
 	height: 36px;
 }
 
-.rs-select2
-	.select2-container
-	.select2-selection--single
-	.select2-selection__rendered {
+.rs-select2 .select2-container .select2-selection--single .select2-selection__rendered {
 	line-height: 36px;
 	padding-left: 0;
 	color: #808080;
@@ -340,10 +340,7 @@ input {
 	font-weight: 500;
 }
 
-.rs-select2
-	.select2-container
-	.select2-selection--single
-	.select2-selection__arrow {
+.rs-select2 .select2-container .select2-selection--single .select2-selection__arrow {
 	height: 34px;
 	right: 4px;
 	display: -webkit-box;
@@ -363,18 +360,11 @@ input {
 	align-items: center;
 }
 
-.rs-select2
-	.select2-container
-	.select2-selection--single
-	.select2-selection__arrow
-	b {
+.rs-select2 .select2-container .select2-selection--single .select2-selection__arrow b {
 	display: none;
 }
 
-.rs-select2
-	.select2-container
-	.select2-selection--single
-	.select2-selection__arrow:after {
+.rs-select2 .select2-container .select2-selection--single .select2-selection__arrow:after {
 	font-family: "Material-Design-Iconic-Font";
 	content: "\f2f9";
 	font-size: 18px;
@@ -385,10 +375,7 @@ input {
 	transition: all 0.4s ease;
 }
 
-.rs-select2
-	.select2-container.select2-container--open
-	.select2-selection--single
-	.select2-selection__arrow::after {
+.rs-select2 .select2-container.select2-container--open .select2-selection--single .select2-selection__arrow::after {
 	-webkit-transform: rotate(-180deg);
 	-moz-transform: rotate(-180deg);
 	-ms-transform: rotate(-180deg);
@@ -411,7 +398,7 @@ input {
 
 .title {
 	text-transform: uppercase;
-	font-weight: 700; 
+	font-weight: 700;
 	text-align: center;
 	margin-bottom: 37px;
 }
@@ -450,18 +437,21 @@ input {
 	.card-2 {
 		display: block;
 	}
+
 	.card-2 .card-heading {
 		width: 100%;
 		display: block;
 		padding-top: 300px;
 		background-position: left center;
 	}
+
 	.card-2 .card-body {
 		display: block;
 		padding: 60px 50px;
 	}
 }
-/* From Uiverse.io by AmIt-DasIT */ 
+
+/* From Uiverse.io by AmIt-DasIT */
 .container {
 	display: flex;
 	flex-direction: column;
@@ -469,57 +459,62 @@ input {
 	position: relative;
 	color: rgb(122, 122, 122);
 
-  }
-  
-  .container .label {
+}
+
+.container .label {
 	font-size: 15px;
 	padding-left: 10px;
 	position: absolute;
 	top: 13px;
 	transition: 0.3s;
 	pointer-events: none;
-  }
-  
-  .input {
+}
+
+.input {
 
 	height: 45px;
-	padding: 5px 7px; 
+	padding: 5px 7px;
 	margin-bottom: 10%;
 	font-size: 15px;
-	background-color: transparent; 
-	border-bottom: 1px solid #e5e5e5;	
-  }
-  
-  .input:focus {
-	
-	color:  #666;;
-	
-  }
-  .select{ 
-	display: flex; 
-	justify-content: space-evenly; 
+	background-color: transparent;
+	border-bottom: 1px solid #e5e5e5;
+}
 
-  } 
-  select{
-	width: 150px; 
-	height: 30px; 
-	border-radius: 10px; 
+.input:focus {
 
-  } 
-  textarea{  border-radius: 5px;
-	border: solid 1px; 
+	color: #666;
+	;
+
+}
+
+.select {
+	display: flex;
+	justify-content: space-evenly;
+
+}
+
+select {
+	width: 150px;
+	height: 30px;
+	border-radius: 10px;
+
+}
+
+textarea {
+	border-radius: 5px;
+	border: solid 1px;
 	padding: 10px;
-  }
- 
-    .container .input:not(:placeholder-shown) ~ .label  {
+}
+
+.container .input:not(:placeholder-shown)~.label {
 	transition: 0.4s;
 	padding-left: 2px;
-	transform: translateY(-35px); 
-  } 
- 
-    
+	transform: translateY(-35px);
+}
 
-  .animated-button {
+
+
+.animated-button {
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -536,89 +531,92 @@ input {
 	cursor: pointer;
 	overflow: hidden;
 	transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button svg {
+}
+
+.animated-button svg {
 	position: absolute;
 	width: 24px;
 	fill: rgb(26, 27, 23);
 	z-index: 9;
 	transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button .arr-1 {
+}
+
+.animated-button .arr-1 {
 	right: 16px;
-  }
-  
-  .animated-button .arr-2 {
+}
+
+.animated-button .arr-2 {
 	left: -25%;
-  }
-  
-  .animated-button .circle {
+}
+
+.animated-button .circle {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 20px;
 	height: 20px;
-	background-color:rgb(255,197,201);
+	background-color: rgb(255, 197, 201);
 	border-radius: 50%;
 	opacity: 0;
 	transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button .text {
+}
+
+.animated-button .text {
 	position: relative;
 	z-index: 1;
 	transform: translateX(-12px);
 	transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button:hover {
+}
+
+.animated-button:hover {
 	box-shadow: 0 0 0 12px transparent;
 	color: #212121;
 	border-radius: 12px;
-  }
-  
-  .animated-button:hover .arr-1 {
+}
+
+.animated-button:hover .arr-1 {
 	right: -25%;
-  }
-  
-  .animated-button:hover .arr-2 {
+}
+
+.animated-button:hover .arr-2 {
 	left: 16px;
-  }
-  
-  .animated-button:hover .text {
+}
+
+.animated-button:hover .text {
 	transform: translateX(12px);
-  }
-  
-  .animated-button:hover svg {
+}
+
+.animated-button:hover svg {
 	fill: #212121;
-  }
-  
-  .animated-button:active {
+}
+
+.animated-button:active {
 	scale: 0.95;
 	box-shadow: 0 0 0 4px rgb(241, 241, 239);
-  }
-  
-  .animated-button:hover .circle {
+}
+
+.animated-button:hover .circle {
 	width: 220px;
 	height: 220px;
 	opacity: 1;
-  }
-.bt{ 
-	text-align: center;  
-	padding-left: 30%; 
+}
 
-} 
-a{ 
+.bt {
+	text-align: center;
+	padding-left: 30%;
+
+}
+
+a {
 	text-decoration: none;
 	font-size: large;
 	color: #212121;
-	font-weight:bold;
-} 
-.p{  
+	font-weight: bold;
+}
+
+.p {
 	padding-top: 2%;
-	font-size: large; 
+	font-size: large;
 	text-align: center;
 }
